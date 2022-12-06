@@ -4,7 +4,7 @@ use_default_settings: true
 
 general:
   debug: false
-  instance_name: "SearXNG"
+  instance_name: "Goof Proof"
 
 search:
   safe_search: 2
@@ -35,7 +35,7 @@ enabled_plugins:
   # - 'Hostname replace'  # see hostname_replace configuration below
   # - 'Infinite scroll'
   # - 'Open Access DOI rewrite'
-  # - 'Vim-like hotkeys'
+  - 'Vim-like hotkeys'
 
 # plugins:
 #   - only_show_green_results

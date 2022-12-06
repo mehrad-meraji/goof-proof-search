@@ -26,7 +26,7 @@ search:
   # Existing autocomplete backends: "dbpedia", "duckduckgo", "google", "yandex",
   # "seznam", "startpage", "swisscows", "qwant", "wikipedia" - leave blank to turn it off
   # by default.
-  autocomplete: ""
+  autocomplete: "google"
   # minimun characters to type before autocompleter starts
   autocomplete_min: 4
   # Default search language - leave blank to detect from browser information or
@@ -49,6 +49,7 @@ search:
   # formats: [html, csv, json, rss]
   formats:
     - html
+    - json
 
 server:
   # If you change port, bind_address or base_url don't forget to rebuild
@@ -56,7 +57,7 @@ server:
   port: 8888
   bind_address: "127.0.0.1"
   base_url: false  # Possible values: false or "https://example.org/location".
-  limiter: false  # rate limit the number of request on the instance, block some bots
+  limiter: true  # rate limit the number of request on the instance, block some bots
 
   # If your instance owns a /etc/searxng/settings.yml file, then set the following
   # values there.

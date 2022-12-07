@@ -182,7 +182,7 @@ article[data-vim-selected].category-social {
   h3 {
     font-size: 1.2rem;
     word-wrap: break-word;
-    margin: 0.4rem 0 0.4rem 0;
+    margin: 0.5rem 0 0.4rem 0;
     padding: 0;
 
     a {
@@ -210,12 +210,12 @@ article[data-vim-selected].category-social {
 
   .content,
   .stat {
-    font-size: 0.9em;
+    font-size: 0.875rem;
     margin: 0;
     padding: 0;
     max-width: 54em;
     word-wrap: break-word;
-    line-height: 1.24;
+    line-height: 1.618;
 
     .highlight {
       color: var(--color-result-description-highlight-font);
@@ -413,6 +413,7 @@ article[data-vim-selected].category-social {
 
 .engines {
   .ltr-float-right();
+  margin-top: 0.75rem;
   color: var(--color-result-engines-font);
 
   span {
@@ -565,7 +566,7 @@ article[data-vim-selected].category-social {
   .infobox .url a {
     color: var(--color-result-link-font);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
 
     &:hover {
       text-decoration: underline;
@@ -603,8 +604,7 @@ article[data-vim-selected].category-social {
   grid-area: answers;
   background: var(--color-answer-background);
   padding: @result-padding;
-  margin: 1rem 0;
-  margin-top: 0;
+  margin: 0 0 1rem;
   color: var(--color-answer-font);
   .rounded-corners;
 
@@ -632,8 +632,9 @@ article[data-vim-selected].category-social {
     margin: 10px 0 10px;
     border: 1px solid var(--color-sidebar-border);
     padding: 1rem;
-    font-size: 0.9em;
-    .rounded-corners;
+    font-size: 0.875rem;
+    line-height: 1.42;
+    .rounded-corners(4px);
 
     h2 {
       margin: 0 0 0.5em 0;

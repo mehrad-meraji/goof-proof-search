@@ -1,16 +1,20 @@
 {% extends 'simple/page_with_header.html' %}
+{% from 'simple/icons.html' import icon, icon_big, icon_small %}
 {% block title %}{{ active_page.title }} - {% endblock %}
 {% block linkto_about %}{% endblock %}
-{% block linkto_donate %}{% endblock %}
 {% block content %}
-<ul class="tabs">
-{% for pagename, locale, page in all_pages %}
-  <li>
-    <a href="{{ url_for('info', pagename=pagename, locale=locale) }}" {% if pagename == active_pagename %}class="active"{% endif %}>{{page.title}}</a>
-  </li>
-{% endfor %}
-</ul>
-<div class="info-page {{pagename}}">
-  {{- active_page.html | safe -}}
-</div>
+<section class="info-section">
+  <aside class="tab-container">
+    <ul class="tabs">
+    {% for pagename, locale, page in all_pages %}
+      <li>
+        <a href="{{ url_for('info', pagename=pagename, locale=locale) }}" {% if pagename == active_pagename %}class="active"{% endif %}>{{page.title}}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </aside>
+  <div class="info-page {{pagename}}">
+    {{- active_page.html | safe -}}
+  </div>
+</section>
 {% endblock %}

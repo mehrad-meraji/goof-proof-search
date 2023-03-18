@@ -23,6 +23,33 @@
       }
     }
 
+    function switchTabs () {
+      const aside = document.querySelectorAll('#search_form aside input[type="radio"]');
+      const panel = document.querySelectorAll('#search_form .tabs [role="tabpanel"]');
+      let selection = null;
+
+      aside.forEach(el => {
+        if (el.checked) {
+          selection = el.attributes['aria-controls'].nodeValue;
+          panel.forEach(el => {
+            el.classList.remove('visible');
+            if (el.id === selection) {
+              el.classList.add('visible');
+            }
+          });
+        }
+      });
+    }
+
+    const form = document.querySelector('#search_form');
+
+    switchTabs();
+    form.addEventListener('change', (e) => {
+      if (e.target.name === 'maintab') {
+        switchTabs();
+      }
+    });
+
     for (const el of d.querySelectorAll('[data-engine-name]')) {
       searxng.on(el, 'mouseenter', load_engine_descriptions);
     }

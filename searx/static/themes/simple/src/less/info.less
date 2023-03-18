@@ -1,9 +1,30 @@
 .info-page {
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-toolkit-tabs-section-border);
+  padding: 1.125rem;
+
+  h1 {
+    margin: 0;
+  }
+
   code {
     font-family: monospace;
     color: var(--color-doc-code);
     background-color: var(--color-doc-code-background);
     padding: 2px 5px;
     .rounded-corners(5px);
+  }
+}
+
+.info-section {
+  display: grid;
+  grid-template-columns: 16.75rem minmax(0, 1fr);
+  gap: 1rem;
+  margin-bottom: 7.75rem;
+  margin-top: 1rem;
+
+  @media screen and (max-width: @phone) {
+    display: flex;
+    flex-direction: column;
   }
 }

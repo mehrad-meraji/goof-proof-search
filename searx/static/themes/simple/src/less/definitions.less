@@ -6,8 +6,57 @@
 
 /// Light Theme
 :root {
-  /// Base Colors
-  --color-base-font: #444;
+  // Base Colors
+
+  // Slate
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+
+  // Gray
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  // Blue
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+
+  // icon btn
+  --color-icon-btn: var(--color-blue-500);
+  --color-border-icon-btn: var(--color-slate-100);
+  --color-hover-icon-btn: var(--color-blue-600);
+
+  // results page icon btn
+  --color-results-icon-btn: var(--color-slate-500);
+  --color-results-border-icon-btn: var(--color-slate-100);
+  --color-results-hover-icon-btn: var(--color-blue-600);
+
+  // Rest of base
+  --color-heading-font: var(--color-blue-900);
+  --color-base-font: #334155;
   --color-base-font-rgb: 68, 68, 68;
   --color-base-background: #fff;
   --color-base-background-mobile: #f2f5f8;
@@ -33,11 +82,15 @@
   --color-show-btn-background: #bbb;
   --color-show-btn-font: #000;
   /// Search Input Colors
-  --color-search-border: #bbb;
+  --color-search-border: var(--color-blue-200);
   --color-search-shadow: 0 2px 8px rgb(34 38 46 / 25%);
   --color-search-background: #fff;
-  --color-search-font: #222;
-  --color-search-background-hover: #3050ff;
+  --color-search-focused-background: var(--color-blue-50);
+  --color-search-focused-font: var(--color-blue-600);
+  --color-search-focused-border: var(--color-blue-500);
+  --color-search-focused-send-background: var(--color-blue-500);
+  --color-search-font: var(--color-blue-500);
+  --color-search-background-hover: var(--color-blue-500);
   /// Modal Colors
   --color-error: #db3434;
   --color-error-background: lighten(#db3434, 40%);
@@ -46,31 +99,42 @@
   --color-success: #42db34;
   --color-success-background: lighten(#42db34, 40%);
   /// Categories Colors
-  --color-categories-item-selected-font: #3050ff;
-  --color-categories-item-border-selected: #3050ff;
+  --color-categories-item: var(--color-blue-900);
+  --color-categories-item-selected: var(--color-blue-100);
+  --color-categories-item-selected-font: var(--color-blue-900);
+  --color-categories-item-border-selected: var(--color-blue-900);
   /// Autocomplete Colors
   --color-autocomplete-font: #000;
   --color-autocomplete-border: #bbb;
   --color-autocomplete-shadow: 0 2px 8px rgb(34 38 46 / 25%);
-  --color-autocomplete-background: #fff;
+  --color-autocomplete-background: var(--color-search-background);
   --color-autocomplete-background-hover: #e3e3e3;
   /// Answer Colors
   --color-answer-font: #444;  // same as --color-base-font
   --color-answer-background: #fff;
   /// Results Colors
+  --color-result-search-border: var(--color-blue-100);
+  --color-result-search-category: var(--color-blue-900);
+  --color-result-search-category-bg: #fff;
+  --color-result-search-category-selected: var(--color-blue-900);
+  --color-result-search-category-bg-selected: var(--color-blue-100);
+  --color-result-search-border-selected: var(--color-blue-600);
+  --color-results-count: var(--color-slate-500);
   --color-result-background: #fff;
   --color-result-border: #ddd;
-  --color-result-url-font: #000;
-  --color-result-vim-selected: #f7f7f7;
+  --color-result-url-font: var(--color-blue-500);
+  --color-result-vim-selected: var(--color-blue-100);
   --color-result-vim-arrow: #000bbb;
-  --color-result-description-highlight-font: #000;
-  --color-result-link-font: #000bbb;
+  --color-result-description-highlight-font: var(--color-blue-900);
+  --color-result-description-highlight-background: var(--color-blue-50);
+  --color-result-link-font: var(--color-blue-800);
   --color-result-link-font-highlight: #000bbb;
   --color-result-link-visited-font: #9822c3;
   --color-result-publishdate-font: #777;
   --color-result-engines-font: #545454;
   --color-result-search-url-border: #ddd;
   --color-result-search-url-font: #000;
+  --color-result-description-font: var(--color-slate-700);
   // Images Colors
   --color-result-image-span-font: #444;
   --color-result-image-span-font-selected: #fff;
@@ -118,14 +182,25 @@
 }
 
 .dark-themes() {
-  /// Base Colors
-  --color-base-font: #bbb;
-  --color-base-font-rgb: 187, 187, 187;
-  --color-base-background: #222428;
-  --color-base-background-mobile: #222428;
+  // icon btn
+  --color-icon-btn: var(--color-slate-400);
+  --color-border-icon-btn: var(--color-slate-700);
+  --color-hover-icon-btn: var(--color-blue-400);
+
+  // results page icon btn
+  --color-results-icon-btn: var(--color-blue-600);
+  --color-results-border-icon-btn: var(--color-blue-900);
+  --color-results-hover-icon-btn: var(--color-blue-500);
+
+  // Base Colors
+  --color-base-font: var(--color-blue-100);
+  --color-base-font-rgb: 96, 165, 250;
+  --color-base-background: var(--color-slate-900);
+  --color-base-background-mobile: var(--color-slate-900);
   --color-url-font: #8af;
   --color-url-visited-font: #c09cd9;
   /// Header Colors
+  --color-heading-font: var(--color-blue-500);
   --color-header-background: #1e1e22;
   --color-header-border: #333;
   /// Footer Colors
@@ -145,11 +220,16 @@
   --color-show-btn-background: #555;
   --color-show-btn-font: #fff;
   /// Search Input Colors
-  --color-search-border: #555;
+  --color-search-border: var(--color-blue-700);
   --color-search-shadow: 0 2px 8px rgb(34 38 46 / 25%);
-  --color-search-background: #2b2e36;
-  --color-search-font: #fff;
-  --color-search-background-hover: #58f;
+  --color-search-background: var(--color-slate-900);
+  --color-search-focused-background: var(--color-blue-900);
+  --color-search-focused-font: var(--color-blue-100);
+  --color-search-focused-border: var(--color-blue-500);
+  --color-search-focused-send-background: var(--color-blue-800);
+  --color-search-font: var(--color-blue-500);
+  --color-search-background-hover: var(--color-blue-900);
+
   /// Modal Colors
   --color-error: #f55b5b;
   --color-error-background: darken(#db3434, 40%);
@@ -158,31 +238,42 @@
   --color-success: #79f56e;
   --color-success-background: darken(#42db34, 40%);
   /// Categories Colors
-  --color-categories-item-selected-font: #58f;
-  --color-categories-item-border-selected: #58f;
+  --color-categories-item-font: var(--color-slate-500);
+  --color-categories-item-selected: var(--color-blue-900);
+  --color-categories-item-selected-font: var(--color-blue-100);
+  --color-categories-item-border-selected: var(--color-blue-400);
   /// Autocomplete Colors
   --color-autocomplete-font: #fff;
   --color-autocomplete-border: #555;
   --color-autocomplete-shadow: 0 2px 8px rgb(34 38 46 / 25%);
-  --color-autocomplete-background: #2b2e36;
-  --color-autocomplete-background-hover: #1e1e22;
+  --color-autocomplete-background: var(--color-search-focused-background);
+  --color-autocomplete-background-hover: var(--color-slate-700);
   /// Answer Colors
   --color-answer-font: #bbb; // same as --color-base-font
   --color-answer-background: #26292f;
   /// Results Colors
+  --color-result-search-border: var(--color-blue-900);
+  --color-result-search-category: var(--color-blue-500);
+  --color-result-search-category-bg: var(--color-slate-900);
+  --color-result-search-category-selected: var(--color-blue-100);
+  --color-result-search-category-bg-selected: var(--color-blue-800);
+  --color-result-search-border-selected: var(--color-blue-600);
+  --color-results-count: var(--color-slate-400);
   --color-result-background: #26292f;
   --color-result-border: #333;
-  --color-result-url-font: #fff;
-  --color-result-vim-selected: #1f1f23cc;
+  --color-result-url-font: var(--color-blue-500);
+  --color-result-vim-selected: var(--color-slate-800);
   --color-result-vim-arrow: #8af;
-  --color-result-description-highlight-font: #fff;
-  --color-result-link-font: #8af;
+  --color-result-description-highlight-font: var(--color-blue-100);
+  --color-result-description-highlight-background: var(--color-blue-800);
+  --color-result-link-font: var(--color-blue-100);
   --color-result-link-font-highlight: #8af;
   --color-result-link-visited-font: #c09cd9;
   --color-result-publishdate-font: #888;
   --color-result-engines-font: #a4a4a4;
   --color-result-search-url-border: #555;
   --color-result-search-url-font: #fff;
+  --color-result-description-font: var(--color-slate-400);
   /// Detail modal : same as the light version
   --color-result-detail-font: #fff;
   --color-result-detail-label-font: lightgray;
@@ -207,7 +298,7 @@
   --color-toolkit-dialog-border: #555;
   --color-toolkit-dialog-background: #1e1e22;
   --color-toolkit-tabs-label-border: #222;
-  --color-toolkit-tabs-section-border: #555;
+  --color-toolkit-tabs-section-border: var(--color-slate-700);
   --color-toolkit-select-background: #313338;
   --color-toolkit-select-border: #555;
   --color-toolkit-select-background-hover: #373b49;
@@ -242,8 +333,8 @@
 }
 
 /// General Size
-@results-width: 45rem;
-@results-sidebar-width: 25rem;
+@results-width: 40rem;
+@results-sidebar-width: 20rem;
 @results-offset: 10rem;
 @results-tablet-offset: 0.5rem;
 @results-gap: 5rem;
@@ -251,7 +342,7 @@
 @result-padding: 1rem;
 @results-image-row-height: 12rem;
 @results-image-row-height-phone: 6rem;
-@search-width: 44rem;
+@search-width: 29.375rem;
 // heigh of #search, see detail.less
 @search-height: 7.6rem;
 
@@ -260,7 +351,7 @@
 @tablet: 79.75em;  // see https://github.com/searxng/searxng/issues/874
 @phone: 50em;
 @small-phone: 35em;
-@ultra-small-phone: 20rem;
+@ultra-small-phone: 23.4375rem;
 
 /// From style.less
 @stacked-bar-chart: rgb(0, 0, 0);

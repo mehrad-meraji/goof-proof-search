@@ -23,7 +23,8 @@
   "dependencies": {
     "autocomplete-js": "2.7.1",
     "leaflet": "^1.8.0",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "tailwindcss": "^3.2.6"
   },
   "scripts": {
     "all": "npm install && grunt",

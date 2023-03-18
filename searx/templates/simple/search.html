@@ -1,15 +1,15 @@
 <form id="search" method="{{ method or 'POST' }}" action="{{ url_for('search') }}" role="search">
   <div id="search_header">
-    <a id="search_logo" href="{{ url_for('index') }}" tabindex="0" title="{{ _('Display the front page') }}">
-      <span hidden>SearXNG</span>
-      {% include 'simple/searxng-wordmark.min.svg' without context %}
-    </a>
     <div id="search_view">
       <div class="search_box">
         <input id="q" name="q" type="text" placeholder="{{ _('Search for...') }}" autocomplete="off" autocapitalize="none" spellcheck="false" autocorrect="off" dir="auto" value="{{ q or '' }}">
         <button id="clear_search" type="reset" aria-label="{{ _('clear') }}" class="hide_if_nojs"><span>{{ icon_big('close') }}</span><span class="show_if_nojs">{{ _('clear') }}</span></button>
-        <button id="send_search" type="submit" aria-label="{{ _('search') }}"><span class="hide_if_nojs">{{ icon_big('search-outline') }}</span><span class="show_if_nojs">{{ _('search') }}</span></button>
+        <button id="send_search" type="submit" aria-label="{{ _('search') }}">{{ icon_big('search-outline') }}</button>
       </div>
+      <nav id="links_on_top">
+        <a href="{{ url_for('info', pagename='about') }}" class="icon-btn link_on_top_about">{{ icon_big('about') }}</a>
+        <a href="{{ url_for('preferences') }}" class="icon-btn link_on_top_preferences">{{ icon_big('cog') }}</a>
+      </nav>
     </div>
     {% set display_tooltip = true %}
     {% include 'simple/categories.html' %}

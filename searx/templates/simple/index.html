@@ -1,8 +1,12 @@
 {% extends "simple/base.html" %}
 {% from 'simple/icons.html' import icon_big %}
+{%- block linkto_home -%}<div></div>{%- endblock -%}
 {% block content %}
 <div class="index">
-    <div class="title"><h1>Goof Proof</h1></div>
+    <div class="title">
+      <img src="/static/themes/simple/img/banner.png" alt="" />
+      <h1>Goof Proof</h1>
+    </div>
     {% include 'simple/simple_search.html' %}
 </div>
 {% endblock %}

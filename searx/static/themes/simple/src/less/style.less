@@ -502,7 +502,7 @@ article[data-vim-selected].category-social {
 .category-files,
 .category-social {
   border: 1px solid var(--color-result-border);
-  margin: 1rem @results-tablet-offset 0 @results-tablet-offset !important;
+  margin: 0 @results-tablet-offset 1rem @results-tablet-offset !important;
   .rounded-corners;
 }
 
@@ -543,6 +543,9 @@ article[data-vim-selected].category-social {
 
 .engines {
   .ltr-float-right();
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   margin-top: 0.75rem;
   color: var(--color-result-engines-font);
 
@@ -668,7 +671,7 @@ article[data-vim-selected].category-social {
 #suggestions {
   .wrapper {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     justify-content: flex-end;
 
     form {
@@ -688,6 +691,10 @@ article[data-vim-selected].category-social {
     background: transparent;
     color: var(--color-result-search-url-font);
     cursor: pointer;
+    width: calc(100%);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
   }
 
   input[type="submit"],
@@ -834,6 +841,26 @@ article[data-vim-selected].category-social {
   }
 }
 
+.numbered_pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.page_number {
+  background: transparent !important;
+  color: var(--color-result-link-font) !important;
+  text-decoration: underline;
+}
+
+.page_number_current {
+  background: transparent;
+  color: var(--color-result-link-visited-font);
+  border: none;
+}
+
 #apis {
   margin-top: 8px;
   clear: both;
@@ -945,6 +972,9 @@ article[data-vim-selected].category-social {
 
     .engines {
       .ltr-float-right();
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       padding: 0 0 3px 0;
     }
   }
@@ -1108,6 +1138,10 @@ article[data-vim-selected].category-social {
   .infobox {
     border: none !important;
     background-color: var(--color-sidebar-background);
+  }
+
+  .numbered_pagination {
+    display: none;
   }
 
   .result-paper {

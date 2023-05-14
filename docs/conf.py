@@ -68,7 +68,7 @@ jinja_filters = {
 # Let the Jinja template in configured_engines.rst access documented_modules
 # to automatically link documentation for modules if it exists.
 def setup(app):
-    ENGINES_DOCNAME = 'admin/engines/configured_engines'
+    ENGINES_DOCNAME = 'user/configured_engines'
 
     def before_read_docs(app, env, docnames):
         assert ENGINES_DOCNAME in docnames
@@ -127,6 +127,10 @@ extensions = [
     'notfound.extension',  # https://github.com/readthedocs/sphinx-notfound-page
 ]
 
+autodoc_default_options = {
+    'member-order': 'groupwise',
+}
+
 myst_enable_extensions = [
   "replacements", "smartquotes"
 ]
@@ -135,6 +139,7 @@ suppress_warnings = ['myst.domains']
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
+    "babel" : ("https://babel.readthedocs.io/en/latest/", None),
     "flask": ("https://flask.palletsprojects.com/", None),
     "flask_babel": ("https://python-babel.github.io/flask-babel/", None),
     # "werkzeug": ("https://werkzeug.palletsprojects.com/", None),

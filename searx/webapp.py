@@ -63,7 +63,7 @@ from searx.settings_defaults import OUTPUT_FORMATS
 from searx.settings_loader import get_default_settings_path
 from searx.exceptions import SearxParameterException
 from searx.engines import (
-    OTHER_CATEGORY,
+    DEFAULT_CATEGORY,
     categories,
     engines,
     engine_shortcuts,
@@ -84,12 +84,12 @@ from searx.webutils import (
 from searx.webadapter import (
     get_search_query_from_webapp,
     get_selected_categories,
+    parse_lang,
 )
 from searx.utils import (
     html_to_text,
     gen_useragent,
     dict_subset,
-    match_language,
 )
 from searx.version import VERSION_STRING, GIT_URL, GIT_BRANCH
 from searx.query import RawTextQuery
@@ -97,6 +97,7 @@ from searx.plugins import Plugin, plugins, initialize as plugin_initialize
 from searx.plugins.oa_doi_rewrite import get_doi_resolver
 from searx.preferences import (
     Preferences,
+    ClientPref,
     ValidationException,
 )
 from searx.answerers import (
@@ -117,12 +118,13 @@ from searx.locales import (
     RTL_LOCALES,
     localeselector,
     locales_initialize,
+    match_locale,
 )
 
 # renaming names from searx imports ...
 from searx.autocomplete import search_autocomplete, backends as autocomplete_backends
-from searx.languages import language_codes as languages
 from searx.redisdb import initialize as redis_initialize
+from searx.sxng_locales import sxng_locales
 from searx.search import SearchWithPlugins, initialize as search_initialize
 from searx.network import stream as http_stream, set_context_network_name
 from searx.search.checker import get_result as checker_get_result
@@ -221,16 +223,9 @@ babel = Babel(app, locale_selector=get_locale)
 
 
 def _get_browser_language(req, lang_list):
-    for lang in req.headers.get("Accept-Language", "en").split(","):
-        if ';' in lang:
-            lang = lang.split(';')[0]
-        if '-' in lang:
-            lang_parts = lang.split('-')
-            lang = "{}-{}".format(lang_parts[0], lang_parts[-1].upper())
-        locale = match_language(lang, lang_list, fallback=None)
-        if locale is not None:
-            return locale
-    return 'en'
+    client = ClientPref.from_http_request(req)
+    locale = match_locale(client.locale_tag, lang_list, fallback='en')
+    return locale
 
 
 def _get_locale_rfc5646(locale):
@@ -373,16 +368,15 @@ def get_translations():
     }
 
 
-def _get_enable_categories(all_categories: Iterable[str]):
-    disabled_engines = request.preferences.engines.get_disabled()
-    enabled_categories = set(
-        # pylint: disable=consider-using-dict-items
-        category
-        for engine_name in engines
-        for category in engines[engine_name].categories
-        if (engine_name, category) not in disabled_engines
-    )
-    return [x for x in all_categories if x in enabled_categories]
+def get_enabled_categories(category_names: Iterable[str]):
+    """The categories in ``category_names```for which there is no active engine
+    are filtered out and a reduced list is returned."""
+
+    enabled_engines = [item[0] for item in request.preferences.engines.get_enabled()]
+    enabled_categories = set()
+    for engine_name in enabled_engines:
+        enabled_categories.update(engines[engine_name].categories)
+    return [x for x in category_names if x in enabled_categories]
 
 
 def get_pretty_url(parsed_url: urllib.parse.ParseResult):
@@ -407,7 +401,7 @@ def get_client_settings():
 
 
 def render(template_name: str, **kwargs):
-
+    # pylint: disable=too-many-statements
     kwargs['client_settings'] = str(
         base64.b64encode(
             bytes(
@@ -434,21 +428,20 @@ def render(template_name: str, **kwargs):
     kwargs['theme'] = request.preferences.get_value('theme')
     kwargs['method'] = request.preferences.get_value('method')
     kwargs['categories_as_tabs'] = list(settings['categories_as_tabs'].keys())
-    kwargs['categories'] = _get_enable_categories(categories.keys())
-    kwargs['OTHER_CATEGORY'] = OTHER_CATEGORY
+    kwargs['categories'] = get_enabled_categories(settings['categories_as_tabs'].keys())
+    kwargs['DEFAULT_CATEGORY'] = DEFAULT_CATEGORY
 
     # i18n
-    kwargs['language_codes'] = [l for l in languages if l[0] in settings['search']['languages']]
+    kwargs['sxng_locales'] = [l for l in sxng_locales if l[0] in settings['search']['languages']]
 
     locale = request.preferences.get_value('locale')
     kwargs['locale_rfc5646'] = _get_locale_rfc5646(locale)
 
     if locale in RTL_LOCALES and 'rtl' not in kwargs:
         kwargs['rtl'] = True
+
     if 'current_language' not in kwargs:
-        kwargs['current_language'] = match_language(
-            request.preferences.get_value('language'), settings['search']['languages']
-        )
+        kwargs['current_language'] = parse_lang(request.preferences, {}, RawTextQuery('', []))
 
     # values from settings
     kwargs['search_formats'] = [x for x in settings['search']['formats'] if x != 'html']
@@ -510,7 +503,10 @@ def pre_request():
     request.timings = []  # pylint: disable=assigning-non-slot
     request.errors = []  # pylint: disable=assigning-non-slot
 
-    preferences = Preferences(themes, list(categories.keys()), engines, plugins)  # pylint: disable=redefined-outer-name
+    client_pref = ClientPref.from_http_request(request)
+    # pylint: disable=redefined-outer-name
+    preferences = Preferences(themes, list(categories.keys()), engines, plugins, client_pref)
+
     user_agent = request.headers.get('User-Agent', '').lower()
     if 'webkit' in user_agent and 'android' in user_agent:
         preferences.key_value_settings['method'].value = 'GET'
@@ -679,7 +675,9 @@ def search():
     raw_text_query = None
     result_container = None
     try:
-        search_query, raw_text_query, _, _ = get_search_query_from_webapp(request.preferences, request.form)
+        search_query, raw_text_query, _, _, selected_locale = get_search_query_from_webapp(
+            request.preferences, request.form
+        )
         # search = Search(search_query) #  without plugins
         search = SearchWithPlugins(search_query, request.user_plugins, request)  # pylint: disable=redefined-outer-name
 
@@ -832,12 +830,8 @@ def search():
             result_container.unresponsive_engines
         ),
         current_locale = request.preferences.get_value("locale"),
-        current_language = match_language(
-            search_query.lang,
-            settings['search']['languages'],
-            fallback=request.preferences.get_value("language")
-        ),
-        search_language = match_language(
+        current_language = selected_locale,
+        search_language = match_locale(
             search.search_query.lang,
             settings['search']['languages'],
             fallback=request.preferences.get_value("language")
@@ -907,16 +901,11 @@ def autocompleter():
     # and there is a query part
     if len(raw_text_query.autocomplete_list) == 0 and len(sug_prefix) > 0:
 
-        # get language from cookie
-        language = request.preferences.get_value('language')
-        if not language or language == 'all':
-            language = 'en'
-        else:
-            language = language.split('-')[0]
+        # get SearXNG's locale and autocomplete backend from cookie
+        sxng_locale = request.preferences.get_value('language')
+        backend_name = request.preferences.get_value('autocomplete')
 
-        # run autocompletion
-        raw_results = search_autocomplete(request.preferences.get_value('autocomplete'), sug_prefix, language)
-        for result in raw_results:
+        for result in search_autocomplete(backend_name, sug_prefix, sxng_locale):
             # attention: this loop will change raw_text_query object and this is
             # the reason why the sug_prefix was stored before (see above)
             if result != sug_prefix:
@@ -1001,7 +990,9 @@ def preferences():
             'rate80': rate80,
             'rate95': rate95,
             'warn_timeout': e.timeout > settings['outgoing']['request_timeout'],
-            'supports_selected_language': _is_selected_language_supported(e, request.preferences),
+            'supports_selected_language': e.traits.is_locale_supported(
+                str(request.preferences.get_value('language') or 'all')
+            ),
             'result_count': result_count,
         }
     # end of stats
@@ -1052,7 +1043,9 @@ def preferences():
     # supports
     supports = {}
     for _, e in filtered_engines.items():
-        supports_selected_language = _is_selected_language_supported(e, request.preferences)
+        supports_selected_language = e.traits.is_locale_supported(
+            str(request.preferences.get_value('language') or 'all')
+        )
         safesearch = e.safesearch
         time_range_support = e.time_range_support
         for checker_test_name in checker_results.get(e.name, {}).get('errors', {}):
@@ -1097,16 +1090,6 @@ def preferences():
         preferences = True
         # fmt: on
     )
-
-
-def _is_selected_language_supported(engine, preferences: Preferences):  # pylint: disable=redefined-outer-name
-    language = preferences.get_value('language')
-    if language == 'all':
-        return True
-    x = match_language(
-        language, getattr(engine, 'supported_languages', []), getattr(engine, 'language_aliases', {}), None
-    )
-    return bool(x)
 
 
 @app.route('/image_proxy', methods=['GET'])
@@ -1327,10 +1310,7 @@ def config():
         if not request.preferences.validate_token(engine):
             continue
 
-        supported_languages = engine.supported_languages
-        if isinstance(engine.supported_languages, dict):
-            supported_languages = list(engine.supported_languages.keys())
-
+        _languages = engine.traits.languages.keys()
         _engines.append(
             {
                 'name': name,
@@ -1339,7 +1319,8 @@ def config():
                 'enabled': not engine.disabled,
                 'paging': engine.paging,
                 'language_support': engine.language_support,
-                'supported_languages': supported_languages,
+                'languages': list(_languages),
+                'regions': list(engine.traits.regions.keys()),
                 'safesearch': engine.safesearch,
                 'time_range_support': engine.time_range_support,
                 'timeout': engine.timeout,

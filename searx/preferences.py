@@ -8,16 +8,17 @@
 from base64 import urlsafe_b64encode, urlsafe_b64decode
 from zlib import compress, decompress
 from urllib.parse import parse_qs, urlencode
-from typing import Iterable, Dict, List
+from typing import Iterable, Dict, List, Optional
 
 import flask
+import babel
 
 from searx import settings, autocomplete
-from searx.engines import Engine
+from searx.enginelib import Engine
 from searx.plugins import Plugin
 from searx.locales import LOCALE_NAMES
 from searx.webutils import VALID_LANGUAGE_CODE
-from searx.engines import OTHER_CATEGORY
+from searx.engines import DEFAULT_CATEGORY
 
 
 COOKIE_MAX_AGE = 60 * 60 * 24 * 365 * 5  # 5 years
@@ -259,7 +260,7 @@ class EnginesSetting(BooleanChoices):
         choices = {}
         for engine in engines:
             for category in engine.categories:
-                if not category in list(settings['categories_as_tabs'].keys()) + [OTHER_CATEGORY]:
+                if not category in list(settings['categories_as_tabs'].keys()) + [DEFAULT_CATEGORY]:
                     continue
                 choices['{}__{}'.format(engine.name, category)] = not engine.disabled
         super().__init__(default_value, choices)
@@ -287,10 +288,65 @@ class PluginsSetting(BooleanChoices):
         return [item[len('plugin_') :] for item in items]
 
 
+class ClientPref:
+    """Container to assemble client prefferences and settings."""
+
+    # hint: searx.webapp.get_client_settings should be moved into this class
+
+    locale: babel.Locale
+    """Locale prefered by the client."""
+
+    def __init__(self, locale: Optional[babel.Locale] = None):
+        self.locale = locale
+
+    @property
+    def locale_tag(self):
+        if self.locale is None:
+            return None
+        tag = self.locale.language
+        if self.locale.territory:
+            tag += '-' + self.locale.territory
+        return tag
+
+    @classmethod
+    def from_http_request(cls, http_request: flask.Request):
+        """Build ClientPref object from HTTP request.
+
+        - `Accept-Language used for locale setting
+          <https://www.w3.org/International/questions/qa-accept-lang-locales.en>`__
+
+        """
+        al_header = http_request.headers.get("Accept-Language")
+        if not al_header:
+            return cls(locale=None)
+
+        pairs = []
+        for l in al_header.split(','):
+            # fmt: off
+            lang, qvalue = [_.strip() for _ in (l.split(';') + ['q=1',])[:2]]
+            # fmt: on
+            try:
+                qvalue = float(qvalue.split('=')[-1])
+                locale = babel.Locale.parse(lang, sep='-')
+            except (ValueError, babel.core.UnknownLocaleError):
+                continue
+            pairs.append((locale, qvalue))
+        pairs.sort(reverse=True, key=lambda x: x[1])
+        return cls(locale=pairs[0][0])
+
+
 class Preferences:
     """Validates and saves preferences to cookies"""
 
-    def __init__(self, themes: List[str], categories: List[str], engines: Dict[str, Engine], plugins: Iterable[Plugin]):
+    def __init__(
+        self,
+        themes: List[str],
+        categories: List[str],
+        engines: Dict[str, Engine],
+        plugins: Iterable[Plugin],
+        client: Optional[ClientPref] = None,
+    ):
+
         super().__init__()
 
         self.key_value_settings: Dict[str, Setting] = {
@@ -414,6 +470,7 @@ class Preferences:
         self.engines = EnginesSetting('engines', engines=engines.values())
         self.plugins = PluginsSetting('plugins', plugins=plugins)
         self.tokens = SetSetting('tokens')
+        self.client = client or ClientPref()
         self.unknown_params: Dict[str, str] = {}
 
     def get_as_url_params(self):

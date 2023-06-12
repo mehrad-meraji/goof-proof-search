@@ -75,13 +75,10 @@
 {%- endmacro -%}
 
 {%- macro checkbox_onoff(name, checked) -%}
-  <input type="checkbox" name="{{ name }}" id="{{ name }}" value="None" class="checkbox-onoff" {% if checked %}checked{% endif %} />
-{%- endmacro -%}
-
-{%- macro checkbox(name, checked, disabled) -%}
-{%- if checked == '?' -%}
-  {{- icon_small('warning') -}}
-{%- else -%}
-  <input type="checkbox"{% if name %} name="{{ name }}"{% endif %} value="None"{% if checked %} checked{% endif %}{% if disabled %} disabled{% endif %} />
-{%- endif -%}
+  <input type="checkbox" {{- ' ' -}}
+         name="{{ name }}" {{- ' ' -}}
+         id="{{ name }}" {{- ' ' -}}
+         aria-labelledby="pref_{{ name }}"{{- ' ' -}}
+         class="checkbox-onoff"{{- ' ' -}}
+         {%- if checked -%} checked{%- endif -%}/>
 {%- endmacro -%}

@@ -297,6 +297,19 @@ engines:
     shortcut: 9g
     disabled: true
 
+  - name: annas archive
+    engine: annas_archive
+    disabled: true
+    shortcut: aa
+
+  # - name: annas articles
+  #   engine: annas_archive
+  #   shortcut: aaa
+  #   # https://docs.searxng.org/src/searx.engines.annas_archive.html
+  #   aa_content: 'journal_article' # book_any .. magazine, standards_document
+  #   aa_ext: 'pdf'  # pdf, epub, ..
+  #   aa_sort: 'newest'  # newest, oldest, largest, smallest
+
   - name: apk mirror
     engine: apkmirror
     timeout: 4.0
@@ -402,6 +415,7 @@ engines:
   - name: btdigg
     engine: btdigg
     shortcut: bt
+    disabled: true
 
   - name: ccc-tv
     engine: xpath
@@ -441,6 +455,20 @@ engines:
     shortcut: cr
     timeout: 30
     disabled: true
+
+  - name: crowdview
+    engine: json_engine
+    shortcut: cv
+    categories: general
+    paging: false
+    search_url: https://crowdview-next-js.onrender.com/api/search-v3?query={query}
+    results_query: results
+    url_query: link
+    title_query: title
+    content_query: snippet
+    disabled: true
+    about:
+      website: https://crowdview.ai/
 
   - name: yep
     engine: json_engine
@@ -599,7 +627,6 @@ engines:
     first_page_num: 1
     shortcut: et
     categories: [dictionaries]
-    disabled: false
     about:
       website: https://www.etymonline.com/
       wikidata_id: Q1188617
@@ -641,11 +668,6 @@ engines:
     shortcut: fsd
     categories: [it, software wikis]
     base_url: https://directory.fsf.org/
-    number_of_results: 5
-    # what part of a page matches the query string: title, text, nearmatch
-    # * title     - query matches title
-    # * text      - query matches the text of page
-    # * nearmatch - nearmatch in title
     search_type: title
     timeout: 5.0
     disabled: true
@@ -882,19 +904,11 @@ engines:
       require_api_key: false
       results: HTML
 
-  # Disabling zlibrary due to z-lib.org domain seizure
-  # https://github.com/searxng/searxng/pull/1937
-  #
-  # - name: z-library
-  #   engine: zlibrary
-  #   shortcut: zlib
-  #   categories: files
-  #   timeout: 3.0
-  #   # choose base_url, otherwise engine will do it at initialization time
-  #   # base_url: https://b-ok.cc
-  #   # base_url: https://de1lib.org
-  #   # base_url: https://booksc.eu   # does not have cover preview
-  #   # base_url: https://booksc.org  # does not have cover preview
+  - name: z-library
+    engine: zlibrary
+    shortcut: zlib
+    categories: files
+    timeout: 7.0
 
   - name: library of congress
     engine: loc
@@ -1117,6 +1131,29 @@ engines:
     engine: photon
     shortcut: ph
 
+  - name: piped
+    engine: piped
+    shortcut: ppd
+    categories: videos
+    piped_filter: videos
+    timeout: 3.0
+
+    # URL to use as link and for embeds
+    frontend_url: https://srv.piped.video
+    # Instance will be selected randomly, for more see https://piped-instances.kavin.rocks/
+    backend_url:
+      - https://pipedapi.kavin.rocks
+      - https://pipedapi-libre.kavin.rocks
+      - https://pipedapi.adminforge.de
+
+  - name: piped.music
+    engine: piped
+    network: piped
+    shortcut: ppdm
+    categories: music
+    piped_filter: music_songs
+    timeout: 3.0
+
   - name: piratebay
     engine: piratebay
     shortcut: tpb
@@ -1185,7 +1222,6 @@ engines:
     engine: qwant
     shortcut: qw
     categories: [general, web]
-    disabled: false
     additional_tests:
       rosebud: *test_rosebud
 
@@ -1194,7 +1230,6 @@ engines:
     engine: qwant
     shortcut: qwn
     categories: news
-    disabled: false
     network: qwant
 
   - name: qwant images
@@ -1202,7 +1237,6 @@ engines:
     engine: qwant
     shortcut: qwi
     categories: [images, web]
-    disabled: false
     network: qwant
 
   - name: qwant videos
@@ -1210,7 +1244,6 @@ engines:
     engine: qwant
     shortcut: qwv
     categories: [videos, web]
-    disabled: false
     network: qwant
 
   # - name: library
@@ -1350,7 +1383,6 @@ engines:
     engine: solidtorrents
     shortcut: solid
     timeout: 4.0
-    disabled: false
     base_url:
       - https://solidtorrents.net
       - https://solidtorrents.eu
@@ -1375,7 +1407,6 @@ engines:
   #       FROM film
   #      WHERE title LIKE :wildcard OR description LIKE :wildcard
   #      ORDER BY duration DESC
-  #   disabled: false
 
   # Requires Tor
   - name: torch
@@ -1392,15 +1423,18 @@ engines:
     shortcut: tch
 
   # torznab engine lets you query any torznab compatible indexer.  Using this
-  # engine in combination with Jackett (https://github.com/Jackett/Jackett)
-  # opens the possibility to query a lot of public and private indexers directly
-  # from SearXNG.
-  # - name: torznab
+  # engine in combination with Jackett opens the possibility to query a lot of
+  # public and private indexers directly from SearXNG. More details at:
+  # https://docs.searxng.org/src/searx.engines.torznab.html
+  #
+  # - name: Torznab EZTV
   #   engine: torznab
-  #   shortcut: trz
-  #   base_url: http://localhost:9117/api/v2.0/indexers/all/results/torznab
+  #   shortcut: eztv
+  #   base_url: http://localhost:9117/api/v2.0/indexers/eztv/results/torznab
   #   enable_http: true  # if using localhost
   #   api_key: xxxxxxxxxxxxxxx
+  #   show_magnet_links: true
+  #   show_torrent_files: false
   #   # https://github.com/Jackett/Jackett/wiki/Jackett-Categories
   #   torznab_categories:  # optional
   #     - 2000
@@ -1410,13 +1444,6 @@ engines:
     shortcut: tw
     engine: twitter
     disabled: true
-
-  # maybe in a fun category
-  #  - name: uncyclopedia
-  #    engine: mediawiki
-  #    shortcut: unc
-  #    base_url: https://uncyclopedia.wikia.com/
-  #    number_of_results: 5
 
   # tmp suspended - too slow, too many errors
   #  - name: urbandictionary
@@ -1494,11 +1521,9 @@ engines:
   - name: wikibooks
     engine: mediawiki
     shortcut: wb
-    categories: general
+    categories: [general, wikimedia]
     base_url: "https://{language}.wikibooks.org/"
-    number_of_results: 5
     search_type: text
-    disabled: true
     about:
       website: https://www.wikibooks.org/
       wikidata_id: Q367
@@ -1506,11 +1531,10 @@ engines:
   - name: wikinews
     engine: mediawiki
     shortcut: wn
-    categories: news
+    categories: [news, wikimedia]
     base_url: "https://{language}.wikinews.org/"
-    number_of_results: 5
     search_type: text
-    disabled: true
+    srsort: create_timestamp_desc
     about:
       website: https://www.wikinews.org/
       wikidata_id: Q964
@@ -1518,11 +1542,9 @@ engines:
   - name: wikiquote
     engine: mediawiki
     shortcut: wq
-    categories: general
+    categories: [general, wikimedia]
     base_url: "https://{language}.wikiquote.org/"
-    number_of_results: 5
     search_type: text
-    disabled: true
     additional_tests:
       rosebud: *test_rosebud
     about:
@@ -1532,23 +1554,29 @@ engines:
   - name: wikisource
     engine: mediawiki
     shortcut: ws
-    categories: general
+    categories: [general, wikimedia]
     base_url: "https://{language}.wikisource.org/"
-    number_of_results: 5
     search_type: text
-    disabled: true
     about:
       website: https://www.wikisource.org/
       wikidata_id: Q263
 
+  - name: wikipecies
+    engine: mediawiki
+    shortcut: wsp
+    categories: [general, science, wikimedia]
+    base_url: "https://species.wikimedia.org/"
+    search_type: text
+    about:
+      website: https://species.wikimedia.org/
+      wikidata_id: Q13679
+
   - name: wiktionary
     engine: mediawiki
     shortcut: wt
-    categories: [dictionaries]
+    categories: [dictionaries, wikimedia]
     base_url: "https://{language}.wiktionary.org/"
-    number_of_results: 5
     search_type: text
-    disabled: false
     about:
       website: https://www.wiktionary.org/
       wikidata_id: Q151
@@ -1556,11 +1584,9 @@ engines:
   - name: wikiversity
     engine: mediawiki
     shortcut: wv
-    categories: general
+    categories: [general, wikimedia]
     base_url: "https://{language}.wikiversity.org/"
-    number_of_results: 5
     search_type: text
-    disabled: true
     about:
       website: https://www.wikiversity.org/
       wikidata_id: Q370
@@ -1568,11 +1594,9 @@ engines:
   - name: wikivoyage
     engine: mediawiki
     shortcut: wy
-    categories: general
+    categories: [general, wikimedia]
     base_url: "https://{language}.wikivoyage.org/"
-    number_of_results: 5
     search_type: text
-    disabled: true
     about:
       website: https://www.wikivoyage.org/
       wikidata_id: Q373
@@ -1598,7 +1622,6 @@ engines:
     engine: translated
     shortcut: tl
     timeout: 5.0
-    disabled: false
     # You can use without an API key, but you are limited to 1000 words/day
     # See: https://mymemory.translated.net/doc/usagelimits.php
     # api_key: ''
@@ -1720,10 +1743,11 @@ engines:
   #   engine: yacy
   #   shortcut: ya
   #   base_url: http://localhost:8090
-  # required if you aren't using HTTPS for your local yacy instance'
+  #   # required if you aren't using HTTPS for your local yacy instance'
   #   enable_http: true
-  #   number_of_results: 5
   #   timeout: 3.0
+  #   # Yacy search mode. 'global' or 'local'.
+  #   search_mode: 'global'
 
   - name: rumble
     engine: rumble
@@ -1739,7 +1763,6 @@ engines:
     base_url: https://www.wordnik.com/
     categories: [dictionaries]
     timeout: 5.0
-    disabled: false
 
   - name: woxikon.de synonyme
     engine: xpath
@@ -1903,6 +1926,10 @@ engines:
       require_api_key: false
       results: HTML
       language: ja
+
+  - name: bt4g
+    engine: bt4g
+    shortcut: bt4g
 
 # Doku engine lets you access to any Doku wiki instance:
 # A public one or a privete/corporate one.

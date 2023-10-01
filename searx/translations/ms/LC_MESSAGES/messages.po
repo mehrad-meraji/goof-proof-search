@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-07-07 19:41+0000\n"
+"POT-Creation-Date: 2023-09-19 09:15+0000\n"
 "PO-Revision-Date: 2023-06-28 09:02+0000\n"
 "Last-Translator: alma <alma@users.noreply.translate.codeberg.org>\n"
 "Language: ms\n"
@@ -153,7 +153,7 @@ msgstr "gelap"
 msgid "No item found"
 msgstr "barang tidak dijumpai"
 
-#: searx/engines/qwant.py:218
+#: searx/engines/qwant.py:277
 #: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:332
 msgid "Source"
 msgstr "Punca"
@@ -162,15 +162,15 @@ msgstr "Punca"
 msgid "Error loading the next page"
 msgstr "Gagal memuat turun muka seterusnya"
 
-#: searx/webapp.py:488 searx/webapp.py:880
+#: searx/webapp.py:491 searx/webapp.py:887
 msgid "Invalid settings, please edit your preferences"
 msgstr "Kesilapan tetapan, sila ubahsuai pilihan"
 
-#: searx/webapp.py:504
+#: searx/webapp.py:507
 msgid "Invalid settings"
 msgstr "Tetapan tidak sah"
 
-#: searx/webapp.py:581 searx/webapp.py:663
+#: searx/webapp.py:584 searx/webapp.py:666
 msgid "search error"
 msgstr "ralat pencarian"
 
@@ -238,11 +238,11 @@ msgstr "{minit} minit yang lalu"
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{jam} jam, {minit} minit yang lalu"
 
-#: searx/answerers/random/answerer.py:67
+#: searx/answerers/random/answerer.py:73
 msgid "Random value generator"
 msgstr "Penjana nombor rawak"
 
-#: searx/answerers/random/answerer.py:68
+#: searx/answerers/random/answerer.py:74
 msgid "Generate different random values"
 msgstr "Jana jumlah rawak yang berbeza"
 
@@ -266,9 +266,13 @@ msgstr "{title} (USANG)"
 msgid "This entry has been superseded by"
 msgstr "Kemasukan ini telah diganti oleh"
 
-#: searx/engines/qwant.py:220
+#: searx/engines/qwant.py:279
 msgid "Channel"
 msgstr "Saluran"
+
+#: searx/engines/seekr.py:194 searx/engines/zlibrary.py:129
+msgid "Language"
+msgstr ""
 
 #: searx/engines/semantic_scholar.py:81
 msgid ""
@@ -312,10 +316,6 @@ msgstr "Petang"
 msgid "Night"
 msgstr "Malam"
 
-#: searx/engines/zlibrary.py:129
-msgid "Language"
-msgstr ""
-
 #: searx/engines/zlibrary.py:130
 msgid "Book rating"
 msgstr ""
@@ -354,18 +354,6 @@ msgid ""
 msgstr ""
 "Elakkan paywall dengan mengubahalih kepada penerbitan versi akses-awam "
 "jika ada"
-
-#: searx/plugins/search_on_category_select.py:19
-msgid "Search on category select"
-msgstr "Cari dalam kategori pilihan"
-
-#: searx/plugins/search_on_category_select.py:20
-msgid ""
-"Perform search immediately if a category selected. Disable to select "
-"multiple categories. (JavaScript required)"
-msgstr ""
-"Jalankan pencarian serta-merta jika kategori telah dipilih. Nyah-aktif "
-"untuk memilih pelbagai kategori. (JavaScript diperlukan)"
 
 #: searx/plugins/self_info.py:10
 msgid "Self Information"
@@ -415,16 +403,6 @@ msgstr ""
 
 #: searx/plugins/tracker_url_remover.py:30
 msgid "Remove trackers arguments from the returned URL"
-msgstr ""
-
-#: searx/plugins/vim_hotkeys.py:3
-msgid "Vim-like hotkeys"
-msgstr ""
-
-#: searx/plugins/vim_hotkeys.py:4
-msgid ""
-"Navigate search results with Vim-like hotkeys (JavaScript required). "
-"Press \"h\" key on main or result page to get help."
 msgstr ""
 
 #: searx/templates/simple/404.html:4
@@ -485,7 +463,7 @@ msgstr "Polisi privasi"
 msgid "Contact instance maintainer"
 msgstr ""
 
-#: searx/templates/simple/categories.html:24
+#: searx/templates/simple/categories.html:26
 msgid "Click on the magnifier to perform search"
 msgstr ""
 
@@ -531,7 +509,7 @@ msgstr ""
 msgid "No HTTPS"
 msgstr "Tanpa HTTPS"
 
-#: searx/templates/simple/elements/engines_msg.html:14
+#: searx/templates/simple/elements/engines_msg.html:18
 #: searx/templates/simple/preferences.html:69
 #: searx/templates/simple/preferences.html:70
 msgid "View error logs and submit a bug report"
@@ -580,23 +558,23 @@ msgstr ""
 msgid "User interface"
 msgstr ""
 
-#: searx/templates/simple/preferences.html:204
+#: searx/templates/simple/preferences.html:208
 msgid "Privacy"
 msgstr "Privasi"
 
-#: searx/templates/simple/preferences.html:217
+#: searx/templates/simple/preferences.html:221
 msgid "Engines"
 msgstr "Enjin-enjin"
 
-#: searx/templates/simple/preferences.html:219
+#: searx/templates/simple/preferences.html:223
 msgid "Currently used search engines"
 msgstr "Enjin carian yang digunakan pada masa ini"
 
-#: searx/templates/simple/preferences.html:227
+#: searx/templates/simple/preferences.html:231
 msgid "Special Queries"
 msgstr "Pertanyaan Khas"
 
-#: searx/templates/simple/preferences.html:233
+#: searx/templates/simple/preferences.html:237
 msgid "Cookies"
 msgstr ""
 
@@ -604,27 +582,27 @@ msgstr ""
 msgid "Answers"
 msgstr "Jawapan"
 
-#: searx/templates/simple/results.html:39
+#: searx/templates/simple/results.html:38
 msgid "Number of results"
 msgstr "Bilangan keputusan"
 
-#: searx/templates/simple/results.html:45
+#: searx/templates/simple/results.html:44
 msgid "Info"
 msgstr "Maklumat"
 
-#: searx/templates/simple/results.html:74
+#: searx/templates/simple/results.html:73
 msgid "Try searching for:"
 msgstr "Cuba cari:"
 
-#: searx/templates/simple/results.html:106
+#: searx/templates/simple/results.html:105
 msgid "Back to top"
 msgstr "Balik ke atas"
 
-#: searx/templates/simple/results.html:124
+#: searx/templates/simple/results.html:123
 msgid "Previous page"
 msgstr "Halaman sebelumnya"
 
-#: searx/templates/simple/results.html:141
+#: searx/templates/simple/results.html:140
 msgid "Next page"
 msgstr "Halaman seterusnya"
 
@@ -664,12 +642,12 @@ msgstr ""
 msgid "Result count"
 msgstr ""
 
-#: searx/templates/simple/preferences/engines.html:24
+#: searx/templates/simple/preferences/engines.html:25
 #: searx/templates/simple/stats.html:28
 msgid "Response time"
 msgstr "Masa tindak balas"
 
-#: searx/templates/simple/preferences/engines.html:28
+#: searx/templates/simple/preferences/engines.html:29
 #: searx/templates/simple/stats.html:29
 msgid "Reliability"
 msgstr "Kebolehpercayaan"
@@ -738,15 +716,15 @@ msgstr "Ulasan"
 msgid "Download results"
 msgstr ""
 
-#: searx/templates/simple/elements/engines_msg.html:3
+#: searx/templates/simple/elements/engines_msg.html:7
 msgid "Messages from the search engines"
 msgstr ""
 
-#: searx/templates/simple/elements/engines_msg.html:8
+#: searx/templates/simple/elements/engines_msg.html:12
 msgid "Error!"
 msgstr "Ralat!"
 
-#: searx/templates/simple/elements/engines_msg.html:9
+#: searx/templates/simple/elements/engines_msg.html:13
 msgid "Engines cannot retrieve results"
 msgstr ""
 
@@ -835,9 +813,23 @@ msgid "Sorry!"
 msgstr "Harap maaf!"
 
 #: searx/templates/simple/messages/no_results.html:4
-msgid ""
-"we didn't find any results. Please use another query or search in more "
-"categories."
+msgid "No results were found. You can try to:"
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:6
+msgid "Refresh the page."
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:7
+msgid "Search for another query or select another category (above)."
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:8
+msgid "Change the search engine used in the preferences:"
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:9
+msgid "Switch to another instance:"
 msgstr ""
 
 #: searx/templates/simple/preferences/answerers.html:4
@@ -865,7 +857,7 @@ msgstr "Contoh-contoh"
 msgid "This is the list of SearXNG's instant answering modules."
 msgstr ""
 
-#: searx/templates/simple/preferences/answerers.html:28
+#: searx/templates/simple/preferences/answerers.html:29
 msgid "This is the list of plugins."
 msgstr ""
 
@@ -881,19 +873,7 @@ msgstr ""
 msgid "Center Alignment"
 msgstr ""
 
-#: searx/templates/simple/preferences/center_alignment.html:5
-#: searx/templates/simple/preferences/infinite_scroll.html:5
-#: searx/templates/simple/preferences/results_on_new_tab.html:5
-msgid "On"
-msgstr "Buka"
-
-#: searx/templates/simple/preferences/center_alignment.html:6
-#: searx/templates/simple/preferences/infinite_scroll.html:6
-#: searx/templates/simple/preferences/results_on_new_tab.html:6
-msgid "Off"
-msgstr "Tutup"
-
-#: searx/templates/simple/preferences/center_alignment.html:10
+#: searx/templates/simple/preferences/center_alignment.html:14
 msgid "Displays results in the center of the page (Oscar layout)."
 msgstr ""
 
@@ -958,7 +938,11 @@ msgstr ""
 msgid "Supports selected language"
 msgstr ""
 
-#: searx/templates/simple/preferences/engines.html:26
+#: searx/templates/simple/preferences/engines.html:23
+msgid "Weight"
+msgstr ""
+
+#: searx/templates/simple/preferences/engines.html:27
 msgid "Max time"
 msgstr "Masa maksimum"
 
@@ -986,21 +970,25 @@ msgstr ""
 msgid "Back"
 msgstr "Balik"
 
+#: searx/templates/simple/preferences/hotkeys.html:2
+msgid "Hotkeys"
+msgstr ""
+
+#: searx/templates/simple/preferences/hotkeys.html:13
+msgid "Vim-like"
+msgstr ""
+
+#: searx/templates/simple/preferences/hotkeys.html:18
+msgid ""
+"Navigate search results with hotkeys (JavaScript required). Press \"h\" "
+"key on main or result page to get help."
+msgstr ""
+
 #: searx/templates/simple/preferences/image_proxy.html:2
 msgid "Image proxy"
 msgstr "Proksi imej"
 
-#: searx/templates/simple/preferences/image_proxy.html:5
-#: searx/templates/simple/preferences/query_in_title.html:5
-msgid "Enabled"
-msgstr ""
-
-#: searx/templates/simple/preferences/image_proxy.html:6
-#: searx/templates/simple/preferences/query_in_title.html:6
-msgid "Disabled"
-msgstr ""
-
-#: searx/templates/simple/preferences/image_proxy.html:10
+#: searx/templates/simple/preferences/image_proxy.html:14
 msgid "Proxying image results through SearXNG"
 msgstr ""
 
@@ -1008,7 +996,7 @@ msgstr ""
 msgid "Infinite scroll"
 msgstr ""
 
-#: searx/templates/simple/preferences/infinite_scroll.html:10
+#: searx/templates/simple/preferences/infinite_scroll.html:14
 msgid "Automatically load next page when scrolling to bottom of current page"
 msgstr ""
 
@@ -1032,7 +1020,7 @@ msgstr ""
 msgid "Query in the page's title"
 msgstr ""
 
-#: searx/templates/simple/preferences/query_in_title.html:10
+#: searx/templates/simple/preferences/query_in_title.html:14
 msgid ""
 "When enabled, the result page's title contains your query. Your browser "
 "can record this title"
@@ -1042,13 +1030,23 @@ msgstr ""
 msgid "Results on new tabs"
 msgstr ""
 
-#: searx/templates/simple/preferences/results_on_new_tab.html:10
+#: searx/templates/simple/preferences/results_on_new_tab.html:14
 msgid "Open result links on new browser tabs"
 msgstr ""
 
 #: searx/templates/simple/preferences/safesearch.html:20
 msgid "Filter content"
 msgstr "Tapis kandungan"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:2
+msgid "Search on category select"
+msgstr "Cari dalam kategori pilihan"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:14
+msgid ""
+"Perform search immediately if a category selected. Disable to select "
+"multiple categories"
+msgstr ""
 
 #: searx/templates/simple/preferences/theme.html:2
 msgid "Theme"
@@ -1080,6 +1078,10 @@ msgstr ""
 
 #: searx/templates/simple/preferences/ui_locale.html:14
 msgid "Change the language of the layout"
+msgstr ""
+
+#: searx/templates/simple/result_templates/code.html:13
+msgid "repo"
 msgstr ""
 
 #: searx/templates/simple/result_templates/default.html:6
@@ -1320,4 +1322,42 @@ msgstr "sembunyikkan video"
 #~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
 #~ " rel=\"external\">ketahui lebih lanjut tentang"
 #~ " kaedah permintaan</a>"
+
+#~ msgid "On"
+#~ msgstr "Buka"
+
+#~ msgid "Off"
+#~ msgstr "Tutup"
+
+#~ msgid "Enabled"
+#~ msgstr ""
+
+#~ msgid "Disabled"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Perform search immediately if a category"
+#~ " selected. Disable to select multiple "
+#~ "categories. (JavaScript required)"
+#~ msgstr ""
+#~ "Jalankan pencarian serta-merta jika "
+#~ "kategori telah dipilih. Nyah-aktif untuk"
+#~ " memilih pelbagai kategori. (JavaScript "
+#~ "diperlukan)"
+
+#~ msgid "Vim-like hotkeys"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Navigate search results with Vim-like"
+#~ " hotkeys (JavaScript required). Press \"h\""
+#~ " key on main or result page to"
+#~ " get help."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "we didn't find any results. Please "
+#~ "use another query or search in "
+#~ "more categories."
+#~ msgstr ""
 

@@ -19,6 +19,7 @@
      default_theme: simple
      theme_args:
        simple_style: auto
+     search_on_category_select: true
 
 .. _static_use_hash:
 
@@ -46,7 +47,7 @@
 .. cache_url:
 
 ``cache_url`` : ``https://web.archive.org/web/``
-  URL prefix of the internet archive or cache, don't forgett trailing slash (if
+  URL prefix of the internet archive or cache, don't forget trailing slash (if
   needed).  The default is https://web.archive.org/web/ alternatives are:
 
   - https://webcache.googleusercontent.com/search?q=cache:
@@ -60,3 +61,6 @@
 
 ``results_on_new_tab``:
   Open result links in a new tab by default.
+
+``search_on_category_select``:
+  Perform search immediately if a category selected. Disable to select multiple categories.

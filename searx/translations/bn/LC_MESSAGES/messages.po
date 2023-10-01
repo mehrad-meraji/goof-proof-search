@@ -13,17 +13,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-07-07 19:41+0000\n"
-"PO-Revision-Date: 2023-07-25 06:38+0000\n"
-"Last-Translator: MonsoonFire <re1qnb5mq@mozmail.com>\n"
-"Language-Team: Bengali <https://translate.codeberg.org/projects/searxng/"
-"searxng/bn/>\n"
+"POT-Creation-Date: 2023-09-19 09:15+0000\n"
+"PO-Revision-Date: 2023-09-17 10:53+0000\n"
+"Last-Translator: return42 <markus.heiser@darmarit.de>\n"
 "Language: bn\n"
+"Language-Team: Bengali "
+"<https://translate.codeberg.org/projects/searxng/searxng/bn/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.18.1\n"
 "Generated-By: Babel 2.12.1\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -155,7 +154,7 @@ msgstr "কালো"
 msgid "No item found"
 msgstr "কোন আইটেম পাওয়া যায়নি"
 
-#: searx/engines/qwant.py:218
+#: searx/engines/qwant.py:277
 #: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:332
 msgid "Source"
 msgstr "উৎস"
@@ -164,15 +163,15 @@ msgstr "উৎস"
 msgid "Error loading the next page"
 msgstr "পরবর্তী পৃষ্ঠাটি লোড করায় ত্রুটি দেখা যাচ্ছে"
 
-#: searx/webapp.py:488 searx/webapp.py:880
+#: searx/webapp.py:491 searx/webapp.py:887
 msgid "Invalid settings, please edit your preferences"
-msgstr "অকেজো সেটিংস, অনুগ্রহ করে আপনার পছন্দগুলি সম্পাদনা করুন৷"
+msgstr "অকেজো সেটিংস, অনুগ্রহ করে আপনার পছন্দগুলি সম্পাদনা করুন"
 
-#: searx/webapp.py:504
+#: searx/webapp.py:507
 msgid "Invalid settings"
 msgstr "অকেজো সেটিংস"
 
-#: searx/webapp.py:581 searx/webapp.py:663
+#: searx/webapp.py:584 searx/webapp.py:666
 msgid "search error"
 msgstr "সার্চ ত্রুটি"
 
@@ -240,11 +239,11 @@ msgstr "{minutes} মিনিট আগে"
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{hours} ঘণ্টা, {minutes} মিনিট আগে"
 
-#: searx/answerers/random/answerer.py:67
+#: searx/answerers/random/answerer.py:73
 msgid "Random value generator"
 msgstr "এলোমেলো মান জেনারেটর"
 
-#: searx/answerers/random/answerer.py:68
+#: searx/answerers/random/answerer.py:74
 msgid "Generate different random values"
 msgstr "বিভিন্ন এলোমেলো মান তৈরি করুন"
 
@@ -268,9 +267,13 @@ msgstr "{title} (অচল)"
 msgid "This entry has been superseded by"
 msgstr "এই এনট্রিটি দ্বারা বাতিল করা হয়েছে৷"
 
-#: searx/engines/qwant.py:220
+#: searx/engines/qwant.py:279
 msgid "Channel"
 msgstr "চ্যানেল"
+
+#: searx/engines/seekr.py:194 searx/engines/zlibrary.py:129
+msgid "Language"
+msgstr "ভাষা"
 
 #: searx/engines/semantic_scholar.py:81
 msgid ""
@@ -318,10 +321,6 @@ msgstr "সন্ধ্যা"
 msgid "Night"
 msgstr "রাত"
 
-#: searx/engines/zlibrary.py:129
-msgid "Language"
-msgstr "ভাষা"
-
 #: searx/engines/zlibrary.py:130
 msgid "Book rating"
 msgstr "বই পর্যালোচনা"
@@ -357,18 +356,6 @@ msgid ""
 msgstr ""
 "Paywall এড়িয়ে চলতে প্রকাশন গুলির open-access সংস্করণে রিডাইরেক্ট করুন "
 "উপলব্ধ থাকলে"
-
-#: searx/plugins/search_on_category_select.py:19
-msgid "Search on category select"
-msgstr "বিভাগ নির্বাচন খুঁজে দেখুন"
-
-#: searx/plugins/search_on_category_select.py:20
-msgid ""
-"Perform search immediately if a category selected. Disable to select "
-"multiple categories. (JavaScript required)"
-msgstr ""
-"যখন একটি বিভাগ নির্বাচন করা হয়, অনুসন্ধান অবিলম্বে সঞ্চালিত হয়. একাধিক "
-"বিভাগ নির্বাচন করতে অক্ষম করুন। (জাভাস্ক্রিপ্ট প্রয়োজন)"
 
 #: searx/plugins/self_info.py:10
 msgid "Self Information"
@@ -422,18 +409,6 @@ msgstr "ট্র্যাকার URL রিমুভার"
 #: searx/plugins/tracker_url_remover.py:30
 msgid "Remove trackers arguments from the returned URL"
 msgstr "ফিরে আসা URL থেকে ট্র্যাকার আর্গুমেন্টগুলি সরান৷"
-
-#: searx/plugins/vim_hotkeys.py:3
-msgid "Vim-like hotkeys"
-msgstr "ভিম-এর মতো হটকি"
-
-#: searx/plugins/vim_hotkeys.py:4
-msgid ""
-"Navigate search results with Vim-like hotkeys (JavaScript required). "
-"Press \"h\" key on main or result page to get help."
-msgstr ""
-"Vim-এর মতো হটকি (জাভাস্ক্রিপ্ট প্রয়োজন) দিয়ে অনুসন্ধান ফলাফল নেভিগেট "
-"করুন। সাহায্য পেতে প্রধান বা ফলাফল পৃষ্ঠায় \"h\" কী চাপুন।"
 
 #: searx/templates/simple/404.html:4
 msgid "Page not found"
@@ -493,7 +468,7 @@ msgstr "গোপনীয়তা নীতি"
 msgid "Contact instance maintainer"
 msgstr "ইন্সট্যান্স রক্ষণাবেক্ষণকারীর সাথে যোগাযোগ করুন"
 
-#: searx/templates/simple/categories.html:24
+#: searx/templates/simple/categories.html:26
 msgid "Click on the magnifier to perform search"
 msgstr "অনুসন্ধান করতে ম্যাগনিফায়ার আইকনে ক্লিক করুন"
 
@@ -543,7 +518,7 @@ msgstr "উপরের তথ্য সহ Github এ একটি নতুন
 msgid "No HTTPS"
 msgstr "HTTPS নেই"
 
-#: searx/templates/simple/elements/engines_msg.html:14
+#: searx/templates/simple/elements/engines_msg.html:18
 #: searx/templates/simple/preferences.html:69
 #: searx/templates/simple/preferences.html:70
 msgid "View error logs and submit a bug report"
@@ -592,23 +567,23 @@ msgstr "ডিফল্ট বিভাগ"
 msgid "User interface"
 msgstr "ব‍্যবহারকারীর সম্মুখে প্রদর্শিত"
 
-#: searx/templates/simple/preferences.html:204
+#: searx/templates/simple/preferences.html:208
 msgid "Privacy"
 msgstr "গোপনীয়তা"
 
-#: searx/templates/simple/preferences.html:217
+#: searx/templates/simple/preferences.html:221
 msgid "Engines"
 msgstr "ইঞ্জিন"
 
-#: searx/templates/simple/preferences.html:219
+#: searx/templates/simple/preferences.html:223
 msgid "Currently used search engines"
 msgstr "বর্তমানে ব্যবহৃত সার্চ ইঞ্জিন"
 
-#: searx/templates/simple/preferences.html:227
+#: searx/templates/simple/preferences.html:231
 msgid "Special Queries"
 msgstr "বিশেষ প্রশ্ন"
 
-#: searx/templates/simple/preferences.html:233
+#: searx/templates/simple/preferences.html:237
 msgid "Cookies"
 msgstr "কুকি"
 
@@ -616,27 +591,27 @@ msgstr "কুকি"
 msgid "Answers"
 msgstr "উত্তর"
 
-#: searx/templates/simple/results.html:39
+#: searx/templates/simple/results.html:38
 msgid "Number of results"
 msgstr "ফলাফলের সংখ্যা"
 
-#: searx/templates/simple/results.html:45
+#: searx/templates/simple/results.html:44
 msgid "Info"
 msgstr "তথ্য"
 
-#: searx/templates/simple/results.html:74
+#: searx/templates/simple/results.html:73
 msgid "Try searching for:"
 msgstr "এটি খোঁজার চেষ্টা করুন:"
 
-#: searx/templates/simple/results.html:106
+#: searx/templates/simple/results.html:105
 msgid "Back to top"
 msgstr "উপরে ফিরে যান"
 
-#: searx/templates/simple/results.html:124
+#: searx/templates/simple/results.html:123
 msgid "Previous page"
 msgstr "পূর্ববর্তী পেইজ"
 
-#: searx/templates/simple/results.html:141
+#: searx/templates/simple/results.html:140
 msgid "Next page"
 msgstr "পরবর্তী পেইজ"
 
@@ -676,12 +651,12 @@ msgstr "স্কোর"
 msgid "Result count"
 msgstr "ফলাফল গণনা"
 
-#: searx/templates/simple/preferences/engines.html:24
+#: searx/templates/simple/preferences/engines.html:25
 #: searx/templates/simple/stats.html:28
 msgid "Response time"
 msgstr "প্রতিক্রিয়া সময়"
 
-#: searx/templates/simple/preferences/engines.html:28
+#: searx/templates/simple/preferences/engines.html:29
 #: searx/templates/simple/stats.html:29
 msgid "Reliability"
 msgstr "নির্ভরযোগ্যতা"
@@ -750,15 +725,15 @@ msgstr "মন্তব্য"
 msgid "Download results"
 msgstr "ডাউনলোডগুলোর ফলাফল"
 
-#: searx/templates/simple/elements/engines_msg.html:3
+#: searx/templates/simple/elements/engines_msg.html:7
 msgid "Messages from the search engines"
 msgstr "সার্চ ইঞ্জিন থেকে বার্তা"
 
-#: searx/templates/simple/elements/engines_msg.html:8
+#: searx/templates/simple/elements/engines_msg.html:12
 msgid "Error!"
 msgstr "ত্রুটি!"
 
-#: searx/templates/simple/elements/engines_msg.html:9
+#: searx/templates/simple/elements/engines_msg.html:13
 msgid "Engines cannot retrieve results"
 msgstr "ইঞ্জিন ফলাফল পুনরুদ্ধার করতে পারেছেনা"
 
@@ -847,12 +822,24 @@ msgid "Sorry!"
 msgstr "দুঃখিত!"
 
 #: searx/templates/simple/messages/no_results.html:4
-msgid ""
-"we didn't find any results. Please use another query or search in more "
-"categories."
+msgid "No results were found. You can try to:"
 msgstr ""
-"আমরা কোন ফলাফল খুঁজে পাইনি. অনুগ্রহ করে অন্য কোনো প্রশ্ন ব্যবহার করুন বা "
-"আরও বিভাগে অনুসন্ধান করুন।"
+
+#: searx/templates/simple/messages/no_results.html:6
+msgid "Refresh the page."
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:7
+msgid "Search for another query or select another category (above)."
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:8
+msgid "Change the search engine used in the preferences:"
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:9
+msgid "Switch to another instance:"
+msgstr ""
 
 #: searx/templates/simple/preferences/answerers.html:4
 #: searx/templates/simple/preferences/engines.html:17
@@ -879,7 +866,7 @@ msgstr "উদাহরণ"
 msgid "This is the list of SearXNG's instant answering modules."
 msgstr "এটি SearXNG এর তাৎক্ষনিক উত্তর মডিউলগুলির তালিকা।"
 
-#: searx/templates/simple/preferences/answerers.html:28
+#: searx/templates/simple/preferences/answerers.html:29
 msgid "This is the list of plugins."
 msgstr "এটি প্লাগইনগুলির তালিকা।"
 
@@ -895,19 +882,7 @@ msgstr "টাইপ করার সময় শব্দগুলো খু�
 msgid "Center Alignment"
 msgstr "মধ‍্যবর্তী বিন‍্যাস"
 
-#: searx/templates/simple/preferences/center_alignment.html:5
-#: searx/templates/simple/preferences/infinite_scroll.html:5
-#: searx/templates/simple/preferences/results_on_new_tab.html:5
-msgid "On"
-msgstr "চালু"
-
-#: searx/templates/simple/preferences/center_alignment.html:6
-#: searx/templates/simple/preferences/infinite_scroll.html:6
-#: searx/templates/simple/preferences/results_on_new_tab.html:6
-msgid "Off"
-msgstr "বন্ধ"
-
-#: searx/templates/simple/preferences/center_alignment.html:10
+#: searx/templates/simple/preferences/center_alignment.html:14
 msgid "Displays results in the center of the page (Oscar layout)."
 msgstr "পেইজের মাঝখানে রেজাল্ট দেখান (অস্কার লেআউট)।"
 
@@ -977,7 +952,11 @@ msgstr "!bang"
 msgid "Supports selected language"
 msgstr "নির্বাচিত ভাষা সমর্থন করে"
 
-#: searx/templates/simple/preferences/engines.html:26
+#: searx/templates/simple/preferences/engines.html:23
+msgid "Weight"
+msgstr "ওজন"
+
+#: searx/templates/simple/preferences/engines.html:27
 msgid "Max time"
 msgstr "সর্বোচ্চ সময়"
 
@@ -1009,21 +988,25 @@ msgstr "ডিফল্টে রিসেট করুন"
 msgid "Back"
 msgstr "পিছনে"
 
+#: searx/templates/simple/preferences/hotkeys.html:2
+msgid "Hotkeys"
+msgstr ""
+
+#: searx/templates/simple/preferences/hotkeys.html:13
+msgid "Vim-like"
+msgstr ""
+
+#: searx/templates/simple/preferences/hotkeys.html:18
+msgid ""
+"Navigate search results with hotkeys (JavaScript required). Press \"h\" "
+"key on main or result page to get help."
+msgstr ""
+
 #: searx/templates/simple/preferences/image_proxy.html:2
 msgid "Image proxy"
 msgstr "ছবির প্রক্সি"
 
-#: searx/templates/simple/preferences/image_proxy.html:5
-#: searx/templates/simple/preferences/query_in_title.html:5
-msgid "Enabled"
-msgstr "সক্রিয়"
-
-#: searx/templates/simple/preferences/image_proxy.html:6
-#: searx/templates/simple/preferences/query_in_title.html:6
-msgid "Disabled"
-msgstr "নিষ্ক্রিয়"
-
-#: searx/templates/simple/preferences/image_proxy.html:10
+#: searx/templates/simple/preferences/image_proxy.html:14
 msgid "Proxying image results through SearXNG"
 msgstr "SearXNG এর মাধ্যমে ছবির ফলাফল প্রক্সি করা হচ্ছে"
 
@@ -1031,7 +1014,7 @@ msgstr "SearXNG এর মাধ্যমে ছবির ফলাফল প্
 msgid "Infinite scroll"
 msgstr "অসীম স্ক্রল"
 
-#: searx/templates/simple/preferences/infinite_scroll.html:10
+#: searx/templates/simple/preferences/infinite_scroll.html:14
 msgid "Automatically load next page when scrolling to bottom of current page"
 msgstr ""
 "বর্তমান পৃষ্ঠার নীচে স্ক্রোল করার সময় স্বয়ংক্রিয়ভাবে পরবর্তী পৃষ্ঠা "
@@ -1057,7 +1040,7 @@ msgstr "ফর্ম জমা দেওয়ার পদ্ধতি পর�
 msgid "Query in the page's title"
 msgstr "জিজ্ঞাসা পৃষ্ঠার শিরোনামে"
 
-#: searx/templates/simple/preferences/query_in_title.html:10
+#: searx/templates/simple/preferences/query_in_title.html:14
 msgid ""
 "When enabled, the result page's title contains your query. Your browser "
 "can record this title"
@@ -1069,13 +1052,23 @@ msgstr ""
 msgid "Results on new tabs"
 msgstr "নতুন ট‍্যাবে রেজাল্ট রয়েছে"
 
-#: searx/templates/simple/preferences/results_on_new_tab.html:10
+#: searx/templates/simple/preferences/results_on_new_tab.html:14
 msgid "Open result links on new browser tabs"
 msgstr "নতুন ব্রাউজার ট্যাবে ফলাফল লিঙ্ক খুলুন"
 
 #: searx/templates/simple/preferences/safesearch.html:20
 msgid "Filter content"
 msgstr "বাছাইকৃত উপাত্ত"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:2
+msgid "Search on category select"
+msgstr "বিভাগ নির্বাচন খুঁজে দেখুন"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:14
+msgid ""
+"Perform search immediately if a category selected. Disable to select "
+"multiple categories"
+msgstr ""
 
 #: searx/templates/simple/preferences/theme.html:2
 msgid "Theme"
@@ -1108,6 +1101,10 @@ msgstr "ইন্টারফেসের ভাষা"
 #: searx/templates/simple/preferences/ui_locale.html:14
 msgid "Change the language of the layout"
 msgstr "লে আউটের ভাষা পরিবর্তন করুন"
+
+#: searx/templates/simple/result_templates/code.html:13
+msgid "repo"
+msgstr "ভাণ্ডার"
 
 #: searx/templates/simple/result_templates/default.html:6
 msgid "show media"
@@ -1365,3 +1362,49 @@ msgstr "ভিডিও লুকিয়ে ফেলুন"
 #~ " rel=\"external\">learn more about request "
 #~ "methods</a>"
 #~ msgstr ""
+
+#~ msgid "On"
+#~ msgstr "চালু"
+
+#~ msgid "Off"
+#~ msgstr "বন্ধ"
+
+#~ msgid "Enabled"
+#~ msgstr "সক্রিয়"
+
+#~ msgid "Disabled"
+#~ msgstr "নিষ্ক্রিয়"
+
+#~ msgid ""
+#~ "Perform search immediately if a category"
+#~ " selected. Disable to select multiple "
+#~ "categories. (JavaScript required)"
+#~ msgstr ""
+#~ "যখন একটি বিভাগ নির্বাচন করা হয়, "
+#~ "অনুসন্ধান অবিলম্বে সঞ্চালিত হয়. একাধিক "
+#~ "বিভাগ নির্বাচন করতে অক্ষম করুন। "
+#~ "(জাভাস্ক্রিপ্ট প্রয়োজন)"
+
+#~ msgid "Vim-like hotkeys"
+#~ msgstr "ভিম-এর মতো হটকি"
+
+#~ msgid ""
+#~ "Navigate search results with Vim-like"
+#~ " hotkeys (JavaScript required). Press \"h\""
+#~ " key on main or result page to"
+#~ " get help."
+#~ msgstr ""
+#~ "Vim-এর মতো হটকি (জাভাস্ক্রিপ্ট প্রয়োজন) "
+#~ "দিয়ে অনুসন্ধান ফলাফল নেভিগেট করুন। "
+#~ "সাহায্য পেতে প্রধান বা ফলাফল পৃষ্ঠায়"
+#~ " \"h\" কী চাপুন।"
+
+#~ msgid ""
+#~ "we didn't find any results. Please "
+#~ "use another query or search in "
+#~ "more categories."
+#~ msgstr ""
+#~ "আমরা কোন ফলাফল খুঁজে পাইনি. অনুগ্রহ "
+#~ "করে অন্য কোনো প্রশ্ন ব্যবহার করুন "
+#~ "বা আরও বিভাগে অনুসন্ধান করুন।"
+

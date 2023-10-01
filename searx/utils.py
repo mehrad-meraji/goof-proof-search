@@ -7,6 +7,7 @@
 import re
 import importlib
 import importlib.util
+import json
 import types
 
 from typing import Optional, Union, Any, Set, List, Dict, MutableMapping, Tuple, Callable
@@ -15,6 +16,7 @@ from os.path import splitext, join
 from random import choice
 from html.parser import HTMLParser
 from urllib.parse import urljoin, urlparse
+from markdown_it import MarkdownIt
 
 from lxml import html
 from lxml.etree import ElementBase, XPath, XPathError, XPathSyntaxError, _ElementStringResult, _ElementUnicodeResult
@@ -35,6 +37,10 @@ _BLOCKED_TAGS = ('script', 'style')
 
 _ECMA_UNESCAPE4_RE = re.compile(r'%u([0-9a-fA-F]{4})', re.UNICODE)
 _ECMA_UNESCAPE2_RE = re.compile(r'%([0-9a-fA-F]{2})', re.UNICODE)
+
+_JS_QUOTE_KEYS_RE = re.compile(r'([\{\s,])(\w+)(:)')
+_JS_VOID_RE = re.compile(r'void\s+[0-9]+|void\s*\([0-9]+\)')
+_JS_DECIMAL_RE = re.compile(r":\s*\.")
 
 _STORAGE_UNIT_VALUE: Dict[str, int] = {
     'TB': 1024 * 1024 * 1024 * 1024,
@@ -156,6 +162,29 @@ def html_to_text(html_str: str) -> str:
     except _HTMLTextExtractorException:
         logger.debug("HTMLTextExtractor: invalid HTML\n%s", html_str)
     return s.get_text()
+
+
+def markdown_to_text(markdown_str: str) -> str:
+    """Extract text from a Markdown string
+
+    Args:
+        * markdown_str (str): string Markdown
+
+    Returns:
+        * str: extracted text
+
+    Examples:
+        >>> markdown_to_text('[example](https://example.com)')
+        'example'
+
+        >>> markdown_to_text('## Headline')
+        'Headline'
+    """
+
+    html_str = (
+        MarkdownIt("commonmark", {"typographer": True}).enable(["replacements", "smartquotes"]).render(markdown_str)
+    )
+    return html_to_text(html_str)
 
 
 def extract_text(xpath_results, allow_none: bool = False) -> Optional[str]:
@@ -514,7 +543,7 @@ def eval_xpath_list(element: ElementBase, xpath_spec: XPathSpecType, min_len: Op
 
 def eval_xpath_getindex(elements: ElementBase, xpath_spec: XPathSpecType, index: int, default=_NOTSET):
     """Call eval_xpath_list then get one element using the index parameter.
-    If the index does not exist, either aise an exception is default is not set,
+    If the index does not exist, either raise an exception is default is not set,
     other return the default value (can be None).
 
     Args:
@@ -599,7 +628,7 @@ def detect_language(text: str, threshold: float = 0.3, only_search_languages: bo
 
     b. Most of SearXNG's engines do not support all the languages from `language
        identification model`_ and there is also a discrepancy in the ISO-639-3
-       (fastext) and ISO-639-2 (SearXNG)handling.  Further more, in SearXNG the
+       (fasttext) and ISO-639-2 (SearXNG)handling.  Further more, in SearXNG the
        locales like ``zh-TH`` (``zh-CN``) are mapped to ``zh_Hant``
        (``zh_Hans``) while the `language identification model`_ reduce both to
        ``zh``.
@@ -621,3 +650,73 @@ def detect_language(text: str, threshold: float = 0.3, only_search_languages: bo
             return None
         return language
     return None
+
+
+def js_variable_to_python(js_variable):
+    """Convert a javascript variable into JSON and then load the value
+
+    It does not deal with all cases, but it is good enough for now.
+    chompjs has a better implementation.
+    """
+    # when in_string is not None, it contains the character that has opened the string
+    # either simple quote or double quote
+    in_string = None
+    # cut the string:
+    # r"""{ a:"f\"irst", c:'sec"ond'}"""
+    # becomes
+    # ['{ a:', '"', 'f\\', '"', 'irst', '"', ', c:', "'", 'sec', '"', 'ond', "'", '}']
+    parts = re.split(r'(["\'])', js_variable)
+    # previous part (to check the escape character antislash)
+    previous_p = ""
+    for i, p in enumerate(parts):
+        # parse characters inside a ECMA string
+        if in_string:
+            # we are in a JS string: replace the colon by a temporary character
+            # so quote_keys_regex doesn't have to deal with colon inside the JS strings
+            parts[i] = parts[i].replace(':', chr(1))
+            if in_string == "'":
+                # the JS string is delimited by simple quote.
+                # This is not supported by JSON.
+                # simple quote delimited string are converted to double quote delimited string
+                # here, inside a JS string, we escape the double quote
+                parts[i] = parts[i].replace('"', r'\"')
+
+        # deal with delimiters and escape character
+        if not in_string and p in ('"', "'"):
+            # we are not in string
+            # but p is double or simple quote
+            # that's the start of a new string
+            # replace simple quote by double quote
+            # (JSON doesn't support simple quote)
+            parts[i] = '"'
+            in_string = p
+            continue
+        if p == in_string:
+            # we are in a string and the current part MAY close the string
+            if len(previous_p) > 0 and previous_p[-1] == '\\':
+                # there is an antislash just before: the ECMA string continue
+                continue
+            # the current p close the string
+            # replace simple quote by double quote
+            parts[i] = '"'
+            in_string = None
+
+        if not in_string:
+            # replace void 0 by null
+            # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/void
+            # we are sure there is no string in p
+            parts[i] = _JS_VOID_RE.sub("null", p)
+        # update previous_p
+        previous_p = p
+    # join the string
+    s = ''.join(parts)
+    # add quote around the key
+    # { a: 12 }
+    # becomes
+    # { "a": 12 }
+    s = _JS_QUOTE_KEYS_RE.sub(r'\1"\2"\3', s)
+    s = _JS_DECIMAL_RE.sub(":0.", s)
+    # replace the surogate character by colon
+    s = s.replace(chr(1), ':')
+    # load the JSON and return the result
+    return json.loads(s)

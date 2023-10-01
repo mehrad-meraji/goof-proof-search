@@ -30,8 +30,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-07-07 19:41+0000\n"
-"PO-Revision-Date: 2023-07-09 15:34+0000\n"
+"POT-Creation-Date: 2023-09-19 09:15+0000\n"
+"PO-Revision-Date: 2023-09-21 05:53+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://translate.codeberg.org/projects/searxng/"
 "searxng/es/>\n"
@@ -40,7 +40,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.0.1\n"
 "Generated-By: Babel 2.12.1\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -172,7 +172,7 @@ msgstr "oscuro"
 msgid "No item found"
 msgstr "Ningún artículo encontrado"
 
-#: searx/engines/qwant.py:218
+#: searx/engines/qwant.py:277
 #: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:332
 msgid "Source"
 msgstr "Fuente"
@@ -181,15 +181,15 @@ msgstr "Fuente"
 msgid "Error loading the next page"
 msgstr "Error al cargar la siguiente página"
 
-#: searx/webapp.py:488 searx/webapp.py:880
+#: searx/webapp.py:491 searx/webapp.py:887
 msgid "Invalid settings, please edit your preferences"
 msgstr "Parámetros incorrectos, por favor, cambia tus preferencias"
 
-#: searx/webapp.py:504
+#: searx/webapp.py:507
 msgid "Invalid settings"
 msgstr "Ajustes no válidos"
 
-#: searx/webapp.py:581 searx/webapp.py:663
+#: searx/webapp.py:584 searx/webapp.py:666
 msgid "search error"
 msgstr "error en la búsqueda"
 
@@ -257,11 +257,11 @@ msgstr "hace {minutes} minuto(s)"
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "hace {hours} hora(s) y {minutes} minuto(s)"
 
-#: searx/answerers/random/answerer.py:67
+#: searx/answerers/random/answerer.py:73
 msgid "Random value generator"
 msgstr "Generador de valores aleatorios"
 
-#: searx/answerers/random/answerer.py:68
+#: searx/answerers/random/answerer.py:74
 msgid "Generate different random values"
 msgstr "Generar varios valores aleatorios"
 
@@ -285,9 +285,13 @@ msgstr "{title} (OBSOLETO)"
 msgid "This entry has been superseded by"
 msgstr "Esta entrada ha sido sustituida por"
 
-#: searx/engines/qwant.py:220
+#: searx/engines/qwant.py:279
 msgid "Channel"
 msgstr "Canal"
+
+#: searx/engines/seekr.py:194 searx/engines/zlibrary.py:129
+msgid "Language"
+msgstr "Idioma"
 
 #: searx/engines/semantic_scholar.py:81
 msgid ""
@@ -336,10 +340,6 @@ msgstr "Tarde"
 msgid "Night"
 msgstr "Noche"
 
-#: searx/engines/zlibrary.py:129
-msgid "Language"
-msgstr "Idioma"
-
 #: searx/engines/zlibrary.py:130
 msgid "Book rating"
 msgstr "Valoración del libro"
@@ -379,18 +379,6 @@ msgid ""
 msgstr ""
 "Evitar barreras de pago redireccionando a las versiones de acceso libre "
 "de las publicaciones cuando estén disponibles"
-
-#: searx/plugins/search_on_category_select.py:19
-msgid "Search on category select"
-msgstr "Buscar en la categoría seleccionada"
-
-#: searx/plugins/search_on_category_select.py:20
-msgid ""
-"Perform search immediately if a category selected. Disable to select "
-"multiple categories. (JavaScript required)"
-msgstr ""
-"Realizar una búsqueda inmediatamente si se ha seleccionado una categoría."
-" Desactivar para seleccionar varias categorías. (Se requiere JavaScript)"
 
 #: searx/plugins/self_info.py:10
 msgid "Self Information"
@@ -443,19 +431,6 @@ msgstr "Eliminador de URL rastreadora"
 #: searx/plugins/tracker_url_remover.py:30
 msgid "Remove trackers arguments from the returned URL"
 msgstr "Eliminar los argumentos de los rastreadores en la URL devuelta"
-
-#: searx/plugins/vim_hotkeys.py:3
-msgid "Vim-like hotkeys"
-msgstr "Teclas de acceso rápido como Vim"
-
-#: searx/plugins/vim_hotkeys.py:4
-msgid ""
-"Navigate search results with Vim-like hotkeys (JavaScript required). "
-"Press \"h\" key on main or result page to get help."
-msgstr ""
-"Navegar por los resultados de búsqueda con las teclas de acceso rápido "
-"como-Vim (es necesario JavaScript). Pulse la tecla \"h\" en la página "
-"principal o en el resultado para obtener ayuda."
 
 #: searx/templates/simple/404.html:4
 msgid "Page not found"
@@ -515,7 +490,7 @@ msgstr "Politica de privacidad"
 msgid "Contact instance maintainer"
 msgstr "Contactar al mantenedor de la instancia"
 
-#: searx/templates/simple/categories.html:24
+#: searx/templates/simple/categories.html:26
 msgid "Click on the magnifier to perform search"
 msgstr "Haz clic en la lupa para realizar la búsqueda"
 
@@ -563,7 +538,7 @@ msgstr "Enviar un nuevo problema a Github que incluya la información de arriba"
 msgid "No HTTPS"
 msgstr "No HTTPS"
 
-#: searx/templates/simple/elements/engines_msg.html:14
+#: searx/templates/simple/elements/engines_msg.html:18
 #: searx/templates/simple/preferences.html:69
 #: searx/templates/simple/preferences.html:70
 msgid "View error logs and submit a bug report"
@@ -612,23 +587,23 @@ msgstr "Categorías predeterminadas"
 msgid "User interface"
 msgstr "Interfaz de usuario"
 
-#: searx/templates/simple/preferences.html:204
+#: searx/templates/simple/preferences.html:208
 msgid "Privacy"
 msgstr "Privacidad"
 
-#: searx/templates/simple/preferences.html:217
+#: searx/templates/simple/preferences.html:221
 msgid "Engines"
 msgstr "Motores"
 
-#: searx/templates/simple/preferences.html:219
+#: searx/templates/simple/preferences.html:223
 msgid "Currently used search engines"
 msgstr "Motores de búsqueda actualmente en uso"
 
-#: searx/templates/simple/preferences.html:227
+#: searx/templates/simple/preferences.html:231
 msgid "Special Queries"
 msgstr "Consultas Especiales"
 
-#: searx/templates/simple/preferences.html:233
+#: searx/templates/simple/preferences.html:237
 msgid "Cookies"
 msgstr "Cookies"
 
@@ -636,27 +611,27 @@ msgstr "Cookies"
 msgid "Answers"
 msgstr "Respuestas"
 
-#: searx/templates/simple/results.html:39
+#: searx/templates/simple/results.html:38
 msgid "Number of results"
 msgstr "Número de resultados"
 
-#: searx/templates/simple/results.html:45
+#: searx/templates/simple/results.html:44
 msgid "Info"
 msgstr "Información"
 
-#: searx/templates/simple/results.html:74
+#: searx/templates/simple/results.html:73
 msgid "Try searching for:"
 msgstr "Intenta buscar:"
 
-#: searx/templates/simple/results.html:106
+#: searx/templates/simple/results.html:105
 msgid "Back to top"
 msgstr "Inicio"
 
-#: searx/templates/simple/results.html:124
+#: searx/templates/simple/results.html:123
 msgid "Previous page"
 msgstr "Página anterior"
 
-#: searx/templates/simple/results.html:141
+#: searx/templates/simple/results.html:140
 msgid "Next page"
 msgstr "Siguiente página"
 
@@ -696,12 +671,12 @@ msgstr "Puntuaciones"
 msgid "Result count"
 msgstr "Resultados"
 
-#: searx/templates/simple/preferences/engines.html:24
+#: searx/templates/simple/preferences/engines.html:25
 #: searx/templates/simple/stats.html:28
 msgid "Response time"
 msgstr "Tiempo de respuesta"
 
-#: searx/templates/simple/preferences/engines.html:28
+#: searx/templates/simple/preferences/engines.html:29
 #: searx/templates/simple/stats.html:29
 msgid "Reliability"
 msgstr "Fiabilidad"
@@ -770,15 +745,15 @@ msgstr "Comentario(s)"
 msgid "Download results"
 msgstr "Descargar resultados"
 
-#: searx/templates/simple/elements/engines_msg.html:3
+#: searx/templates/simple/elements/engines_msg.html:7
 msgid "Messages from the search engines"
 msgstr "Mensajes de los motores de búsqueda"
 
-#: searx/templates/simple/elements/engines_msg.html:8
+#: searx/templates/simple/elements/engines_msg.html:12
 msgid "Error!"
 msgstr "¡Error!"
 
-#: searx/templates/simple/elements/engines_msg.html:9
+#: searx/templates/simple/elements/engines_msg.html:13
 msgid "Engines cannot retrieve results"
 msgstr "Los motores no pueden obtener resultados"
 
@@ -867,12 +842,24 @@ msgid "Sorry!"
 msgstr "¡Lo sentimos!"
 
 #: searx/templates/simple/messages/no_results.html:4
-msgid ""
-"we didn't find any results. Please use another query or search in more "
-"categories."
-msgstr ""
-"No encontramos ningún resultado. Por favor, formule su búsqueda de otra "
-"forma o busque en más categorías."
+msgid "No results were found. You can try to:"
+msgstr "No se encontraron resultados. Puedes intentar:"
+
+#: searx/templates/simple/messages/no_results.html:6
+msgid "Refresh the page."
+msgstr "Recarga la página."
+
+#: searx/templates/simple/messages/no_results.html:7
+msgid "Search for another query or select another category (above)."
+msgstr "Haz otra consulta o selecciona otra categoría (arriba)."
+
+#: searx/templates/simple/messages/no_results.html:8
+msgid "Change the search engine used in the preferences:"
+msgstr "Cambiar el motor de búsqueda utilizado en las preferencias:"
+
+#: searx/templates/simple/messages/no_results.html:9
+msgid "Switch to another instance:"
+msgstr "Cambiar a otra instancia:"
 
 #: searx/templates/simple/preferences/answerers.html:4
 #: searx/templates/simple/preferences/engines.html:17
@@ -899,7 +886,7 @@ msgstr "Ejemplos"
 msgid "This is the list of SearXNG's instant answering modules."
 msgstr "Esta es la lista de módulos de respuestas instantáneas de SearXNG."
 
-#: searx/templates/simple/preferences/answerers.html:28
+#: searx/templates/simple/preferences/answerers.html:29
 msgid "This is the list of plugins."
 msgstr "Esta es la lista de plugins."
 
@@ -915,19 +902,7 @@ msgstr "Buscar mientras escribes"
 msgid "Center Alignment"
 msgstr "Alineación central"
 
-#: searx/templates/simple/preferences/center_alignment.html:5
-#: searx/templates/simple/preferences/infinite_scroll.html:5
-#: searx/templates/simple/preferences/results_on_new_tab.html:5
-msgid "On"
-msgstr "Activado"
-
-#: searx/templates/simple/preferences/center_alignment.html:6
-#: searx/templates/simple/preferences/infinite_scroll.html:6
-#: searx/templates/simple/preferences/results_on_new_tab.html:6
-msgid "Off"
-msgstr "Desactivado"
-
-#: searx/templates/simple/preferences/center_alignment.html:10
+#: searx/templates/simple/preferences/center_alignment.html:14
 msgid "Displays results in the center of the page (Oscar layout)."
 msgstr "Muestra los resultados en el centro de la página (diseño Oscar)."
 
@@ -1000,7 +975,11 @@ msgstr "!bang"
 msgid "Supports selected language"
 msgstr "Soporta el idioma seleccionado"
 
-#: searx/templates/simple/preferences/engines.html:26
+#: searx/templates/simple/preferences/engines.html:23
+msgid "Weight"
+msgstr "Peso"
+
+#: searx/templates/simple/preferences/engines.html:27
 msgid "Max time"
 msgstr "Tiempo máximo"
 
@@ -1032,21 +1011,28 @@ msgstr "Restablecer configuración por defecto"
 msgid "Back"
 msgstr "Atrás"
 
+#: searx/templates/simple/preferences/hotkeys.html:2
+msgid "Hotkeys"
+msgstr "Atajo de teclado"
+
+#: searx/templates/simple/preferences/hotkeys.html:13
+msgid "Vim-like"
+msgstr ""
+
+#: searx/templates/simple/preferences/hotkeys.html:18
+msgid ""
+"Navigate search results with hotkeys (JavaScript required). Press \"h\" "
+"key on main or result page to get help."
+msgstr ""
+"Navega por los resultados de la búsqueda con las teclas de acceso rápido (se "
+"requiere JavaScript). Presiona la tecla \"h\" en la página principal o de "
+"los resultados para obtener ayuda."
+
 #: searx/templates/simple/preferences/image_proxy.html:2
 msgid "Image proxy"
 msgstr "Proxy de imágenes"
 
-#: searx/templates/simple/preferences/image_proxy.html:5
-#: searx/templates/simple/preferences/query_in_title.html:5
-msgid "Enabled"
-msgstr "Activado"
-
-#: searx/templates/simple/preferences/image_proxy.html:6
-#: searx/templates/simple/preferences/query_in_title.html:6
-msgid "Disabled"
-msgstr "Desactivado"
-
-#: searx/templates/simple/preferences/image_proxy.html:10
+#: searx/templates/simple/preferences/image_proxy.html:14
 msgid "Proxying image results through SearXNG"
 msgstr "Cargando los resultados de imágenes a través de SearXNG"
 
@@ -1054,7 +1040,7 @@ msgstr "Cargando los resultados de imágenes a través de SearXNG"
 msgid "Infinite scroll"
 msgstr "Deslizamiento infinito"
 
-#: searx/templates/simple/preferences/infinite_scroll.html:10
+#: searx/templates/simple/preferences/infinite_scroll.html:14
 msgid "Automatically load next page when scrolling to bottom of current page"
 msgstr ""
 "Cargar automáticamente la siguiente página al deslizarse hasta el final "
@@ -1082,7 +1068,7 @@ msgstr "Cambiar cómo se envían los formularios"
 msgid "Query in the page's title"
 msgstr "Petición en el titulo de la pagina"
 
-#: searx/templates/simple/preferences/query_in_title.html:10
+#: searx/templates/simple/preferences/query_in_title.html:14
 msgid ""
 "When enabled, the result page's title contains your query. Your browser "
 "can record this title"
@@ -1094,13 +1080,25 @@ msgstr ""
 msgid "Results on new tabs"
 msgstr "Resultados en nuevas pestañas"
 
-#: searx/templates/simple/preferences/results_on_new_tab.html:10
+#: searx/templates/simple/preferences/results_on_new_tab.html:14
 msgid "Open result links on new browser tabs"
 msgstr "Abrir los resultados en nuevas pestañas del navegador"
 
 #: searx/templates/simple/preferences/safesearch.html:20
 msgid "Filter content"
 msgstr "Filtro de contenido"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:2
+msgid "Search on category select"
+msgstr "Buscar en la categoría seleccionada"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:14
+msgid ""
+"Perform search immediately if a category selected. Disable to select "
+"multiple categories"
+msgstr ""
+"Realiza la búsqueda inmediatamente si se selecciona una categoría. "
+"Desactivar para seleccionar varias categorías"
 
 #: searx/templates/simple/preferences/theme.html:2
 msgid "Theme"
@@ -1133,6 +1131,10 @@ msgstr "Idioma de la interfaz"
 #: searx/templates/simple/preferences/ui_locale.html:14
 msgid "Change the language of the layout"
 msgstr "Cambiar idioma de la interfaz"
+
+#: searx/templates/simple/result_templates/code.html:13
+msgid "repo"
+msgstr "repositorios"
 
 #: searx/templates/simple/result_templates/default.html:6
 msgid "show media"
@@ -1649,3 +1651,50 @@ msgstr "ocultar video"
 #~ "href=\"http://es.wikipedia.org/wiki/Hypertext_Transfer_Protocol#M.C3.A9todos_de_petici.C3.B3n\""
 #~ " rel=\"external\">más información sobre métodos"
 #~ " de peticiones</a>"
+
+#~ msgid "On"
+#~ msgstr "Activado"
+
+#~ msgid "Off"
+#~ msgstr "Desactivado"
+
+#~ msgid "Enabled"
+#~ msgstr "Activado"
+
+#~ msgid "Disabled"
+#~ msgstr "Desactivado"
+
+#~ msgid ""
+#~ "Perform search immediately if a category"
+#~ " selected. Disable to select multiple "
+#~ "categories. (JavaScript required)"
+#~ msgstr ""
+#~ "Realizar una búsqueda inmediatamente si "
+#~ "se ha seleccionado una categoría. "
+#~ "Desactivar para seleccionar varias categorías."
+#~ " (Se requiere JavaScript)"
+
+#~ msgid "Vim-like hotkeys"
+#~ msgstr "Teclas de acceso rápido como Vim"
+
+#~ msgid ""
+#~ "Navigate search results with Vim-like"
+#~ " hotkeys (JavaScript required). Press \"h\""
+#~ " key on main or result page to"
+#~ " get help."
+#~ msgstr ""
+#~ "Navegar por los resultados de búsqueda"
+#~ " con las teclas de acceso rápido "
+#~ "como-Vim (es necesario JavaScript). "
+#~ "Pulse la tecla \"h\" en la página"
+#~ " principal o en el resultado para "
+#~ "obtener ayuda."
+
+#~ msgid ""
+#~ "we didn't find any results. Please "
+#~ "use another query or search in "
+#~ "more categories."
+#~ msgstr ""
+#~ "No encontramos ningún resultado. Por "
+#~ "favor, formule su búsqueda de otra "
+#~ "forma o busque en más categorías."

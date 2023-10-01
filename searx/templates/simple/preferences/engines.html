@@ -14,12 +14,13 @@
     <table class="striped table_engines">{{- '' -}}
 
       <tr>{{- '' -}}
-        <th class="engine_checkbox">{{- _("Allow") -}}</th>{{- '' -}}
+        <th class="checkbox-col">{{- _("Allow") -}}</th>{{- '' -}}
         <th class="name">{{- _("Engine name") -}}</th>{{- '' -}}
         <th class="shortcut">{{ _("!bang") -}}</th>{{- '' -}}
         <th>{{- _("Supports selected language") -}}</th>{{- '' -}}
         <th>{{- _("SafeSearch") -}}</th>{{- '' -}}
         <th>{{- _("Time range") -}}</th>{{- '' -}}
+        <th>{{- _("Weight") }}</th>
         {%- if enable_metrics -%}
           <th>{{- _("Response time") -}}</th>
         {%- endif -%}
@@ -32,9 +33,9 @@
       {%- for group, group_bang, engines in engines_by_category[categ] | group_engines_in_tab -%}
 
         {%- if loop.length > 1 -%}
-          <tr>{{- '' -}}
-            <th class="engine-group" colspan="2">{{- _(group) -}}</th>{{- '' -}}
-            <th class="engine-group" colspan="7">
+          <tr class="pref-group" >{{- '' -}}
+            <th colspan="2">{{- _(group) -}}</th>{{- '' -}}
+            <th colspan="8">
               {%- if group_bang -%}
                 <span class="bang">{{- group_bang -}}</span>
               {%- endif -%}</th>{{- '' -}}
@@ -72,6 +73,7 @@
               <td>
                 {{- checkbox(None, supports[search_engine.name]['time_range_support'], true) -}}
               </td>{{- '' -}}
+              <td>{{- search_engine.weight or '1.0' -}}</td>{{- '' -}}
               {%- if enable_metrics -%}
                 {{- engine_time(search_engine.name) -}}
               {%- endif -%}

@@ -72,7 +72,7 @@ paging = True
 backend_url: list | str = "https://pipedapi.kavin.rocks"
 """Piped-Backend_: The core component behind Piped.  The value is an URL or a
 list of URLs.  In the latter case instance will be selected randomly.  For a
-complete list of offical instances see Piped-Instances (`JSON
+complete list of official instances see Piped-Instances (`JSON
 <https://piped-instances.kavin.rocks/>`__)
 
 .. _Piped-Instances: https://github.com/TeamPiped/Piped/wiki/Instances
@@ -130,13 +130,14 @@ def response(resp):
     json = resp.json()
 
     for result in json["items"]:
-        publishedDate = parser.parse(time.ctime(result.get("uploaded", 0) / 1000))
+        # note: piped returns -1 for all upload times when filtering for music
+        uploaded = result.get("uploaded", -1)
 
         item = {
             # the api url differs from the frontend, hence use piped.video as default
             "url": _frontend_url() + result.get("url", ""),
             "title": result.get("title", ""),
-            "publishedDate": publishedDate,
+            "publishedDate": parser.parse(time.ctime(uploaded / 1000)) if uploaded != -1 else None,
             "iframe_src": _frontend_url() + '/embed' + result.get("url", ""),
         }
 

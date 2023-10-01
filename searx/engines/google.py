@@ -22,7 +22,7 @@ import babel.core
 import babel.languages
 
 from searx.utils import extract_text, eval_xpath, eval_xpath_list, eval_xpath_getindex
-from searx.locales import language_tag, region_tag, get_offical_locales
+from searx.locales import language_tag, region_tag, get_official_locales
 from searx.network import get  # see https://github.com/searxng/searxng/issues/762
 from searx.exceptions import SearxEngineCaptchaException
 from searx.enginelib.traits import EngineTraits
@@ -184,8 +184,8 @@ def get_google_info(params, eng_traits):
     #
     # To select 'all' languages an empty 'lr' value is used.
     #
-    # Different to other google services, Google Schloar supports to select more
-    # than one language. The languages are seperated by a pipe '|' (logical OR).
+    # Different to other google services, Google Scholar supports to select more
+    # than one language. The languages are separated by a pipe '|' (logical OR).
     # By example: &lr=lang_zh-TW%7Clang_de selects articles written in
     # traditional chinese OR german language.
 
@@ -198,11 +198,13 @@ def get_google_info(params, eng_traits):
     #   particular country.
     #   https://developers.google.com/custom-search/docs/xml_results#crsp
 
-    ret_val['params']['cr'] = 'country' + country
-    if sxng_locale == 'all':
-        ret_val['params']['cr'] = ''
+    # specify a region (country) only if a region is given in the selected
+    # locale --> https://github.com/searxng/searxng/issues/2672
+    ret_val['params']['cr'] = ''
+    if len(sxng_locale.split('-')) > 1:
+        ret_val['params']['cr'] = 'country' + country
 
-    # gl parameter: (mandatory by Geeogle News)
+    # gl parameter: (mandatory by Google News)
     #   The gl parameter value is a two-letter country code. For WebSearch
     #   results, the gl parameter boosts search results whose country of origin
     #   matches the parameter value. See the Country Codes section for a list of
@@ -331,11 +333,13 @@ def response(resp):
 
     # results --> answer
     answer_list = eval_xpath(dom, '//div[contains(@class, "LGOjhe")]')
-    if answer_list:
-        answer_list = [_.xpath("normalize-space()") for _ in answer_list]
-        results.append({'answer': ' '.join(answer_list)})
-    else:
-        logger.debug("did not find 'answer'")
+    for item in answer_list:
+        results.append(
+            {
+                'answer': item.xpath("normalize-space()"),
+                'url': (eval_xpath(item, '../..//a/@href') + [None])[0],
+            }
+        )
 
     # parse results
 
@@ -461,7 +465,7 @@ def fetch_traits(engine_traits: EngineTraits, add_domains: bool = True):
             engine_traits.all_locale = 'ZZ'
             continue
 
-        sxng_locales = get_offical_locales(eng_country, engine_traits.languages.keys(), regional=True)
+        sxng_locales = get_official_locales(eng_country, engine_traits.languages.keys(), regional=True)
 
         if not sxng_locales:
             print("ERROR: can't map from google country %s (%s) to a babel region." % (x.get('data-name'), eng_country))

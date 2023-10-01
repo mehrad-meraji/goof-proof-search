@@ -11,20 +11,19 @@
 # return42 <markus.heiser@darmarit.de>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-07-07 19:41+0000\n"
-"PO-Revision-Date: 2023-07-09 15:34+0000\n"
+"POT-Creation-Date: 2023-09-19 09:15+0000\n"
+"PO-Revision-Date: 2023-09-12 14:53+0000\n"
 "Last-Translator: return42 <markus.heiser@darmarit.de>\n"
-"Language-Team: Serbian <https://translate.codeberg.org/projects/searxng/"
-"searxng/sr/>\n"
 "Language: sr\n"
+"Language-Team: Serbian "
+"<https://translate.codeberg.org/projects/searxng/searxng/sr/>\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.18.1\n"
 "Generated-By: Babel 2.12.1\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -156,7 +155,7 @@ msgstr "мрачно"
 msgid "No item found"
 msgstr "Ставка није пронађена"
 
-#: searx/engines/qwant.py:218
+#: searx/engines/qwant.py:277
 #: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:332
 msgid "Source"
 msgstr "Извор"
@@ -165,15 +164,15 @@ msgstr "Извор"
 msgid "Error loading the next page"
 msgstr "Грешка приликом учитавања следеће странице"
 
-#: searx/webapp.py:488 searx/webapp.py:880
+#: searx/webapp.py:491 searx/webapp.py:887
 msgid "Invalid settings, please edit your preferences"
 msgstr "Неважеће поставке, молимо уредите свој избор"
 
-#: searx/webapp.py:504
+#: searx/webapp.py:507
 msgid "Invalid settings"
 msgstr "Неважећа подешавања"
 
-#: searx/webapp.py:581 searx/webapp.py:663
+#: searx/webapp.py:584 searx/webapp.py:666
 msgid "search error"
 msgstr "грешка у претрази"
 
@@ -241,11 +240,11 @@ msgstr "пре {minutes} минут(у,е,а)"
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "пре {hours} час(a) и {minutes} минут(у,е,а)"
 
-#: searx/answerers/random/answerer.py:67
+#: searx/answerers/random/answerer.py:73
 msgid "Random value generator"
 msgstr "Генератор случајних вредности"
 
-#: searx/answerers/random/answerer.py:68
+#: searx/answerers/random/answerer.py:74
 msgid "Generate different random values"
 msgstr "Генеришите различите случајне вредности"
 
@@ -269,9 +268,13 @@ msgstr "{title} (ЗАСТАРЕЛО)"
 msgid "This entry has been superseded by"
 msgstr "Овај унос је заменио"
 
-#: searx/engines/qwant.py:220
+#: searx/engines/qwant.py:279
 msgid "Channel"
 msgstr "Канал"
+
+#: searx/engines/seekr.py:194 searx/engines/zlibrary.py:129
+msgid "Language"
+msgstr "Језик"
 
 #: searx/engines/semantic_scholar.py:81
 msgid ""
@@ -319,10 +322,6 @@ msgstr "Vece"
 msgid "Night"
 msgstr "Noc"
 
-#: searx/engines/zlibrary.py:129
-msgid "Language"
-msgstr "Језик"
-
 #: searx/engines/zlibrary.py:130
 msgid "Book rating"
 msgstr ""
@@ -358,18 +357,6 @@ msgid ""
 "Avoid paywalls by redirecting to open-access versions of publications "
 "when available"
 msgstr "Избегните плаћање у случају да је доступна бесплатна публикација"
-
-#: searx/plugins/search_on_category_select.py:19
-msgid "Search on category select"
-msgstr "Тражите категорију избора"
-
-#: searx/plugins/search_on_category_select.py:20
-msgid ""
-"Perform search immediately if a category selected. Disable to select "
-"multiple categories. (JavaScript required)"
-msgstr ""
-"Одмах извршите претрагу ако је изабрана категорија. Онемогућите да би "
-"изабрали више категорија. (Потребан је JavaScript)"
 
 #: searx/plugins/self_info.py:10
 msgid "Self Information"
@@ -420,19 +407,6 @@ msgstr "Уклони трекер URL адресе"
 #: searx/plugins/tracker_url_remover.py:30
 msgid "Remove trackers arguments from the returned URL"
 msgstr "Уклања аргументе трекера од повратне URL адресе"
-
-#: searx/plugins/vim_hotkeys.py:3
-msgid "Vim-like hotkeys"
-msgstr "Vim стил пречице"
-
-#: searx/plugins/vim_hotkeys.py:4
-msgid ""
-"Navigate search results with Vim-like hotkeys (JavaScript required). "
-"Press \"h\" key on main or result page to get help."
-msgstr ""
-"Померите резултате претраге помоћу Vim-пречица (потребан је JavaScript )."
-" Притисните тастер \"h\" на главној или резултатној страници да бисте "
-"добили помоћ."
 
 #: searx/templates/simple/404.html:4
 msgid "Page not found"
@@ -492,7 +466,7 @@ msgstr "Политика приватности"
 msgid "Contact instance maintainer"
 msgstr "Контактирај домара инстанце"
 
-#: searx/templates/simple/categories.html:24
+#: searx/templates/simple/categories.html:26
 msgid "Click on the magnifier to perform search"
 msgstr "Кликни на лупу за претрагу"
 
@@ -538,7 +512,7 @@ msgstr "Пријавите нову грешку на Гитхабу укључ�
 msgid "No HTTPS"
 msgstr "Нема HTTPS"
 
-#: searx/templates/simple/elements/engines_msg.html:14
+#: searx/templates/simple/elements/engines_msg.html:18
 #: searx/templates/simple/preferences.html:69
 #: searx/templates/simple/preferences.html:70
 msgid "View error logs and submit a bug report"
@@ -587,23 +561,23 @@ msgstr "Подразумеване категорије"
 msgid "User interface"
 msgstr "Кориснички интерфејс"
 
-#: searx/templates/simple/preferences.html:204
+#: searx/templates/simple/preferences.html:208
 msgid "Privacy"
 msgstr "Приватност"
 
-#: searx/templates/simple/preferences.html:217
+#: searx/templates/simple/preferences.html:221
 msgid "Engines"
 msgstr "Претраживачи"
 
-#: searx/templates/simple/preferences.html:219
+#: searx/templates/simple/preferences.html:223
 msgid "Currently used search engines"
 msgstr "Тренутно коришћени претраживачи"
 
-#: searx/templates/simple/preferences.html:227
+#: searx/templates/simple/preferences.html:231
 msgid "Special Queries"
 msgstr "Посебни упити"
 
-#: searx/templates/simple/preferences.html:233
+#: searx/templates/simple/preferences.html:237
 msgid "Cookies"
 msgstr "Колачићи"
 
@@ -611,27 +585,27 @@ msgstr "Колачићи"
 msgid "Answers"
 msgstr "Одговори"
 
-#: searx/templates/simple/results.html:39
+#: searx/templates/simple/results.html:38
 msgid "Number of results"
 msgstr "Број резултата"
 
-#: searx/templates/simple/results.html:45
+#: searx/templates/simple/results.html:44
 msgid "Info"
 msgstr "Информације"
 
-#: searx/templates/simple/results.html:74
+#: searx/templates/simple/results.html:73
 msgid "Try searching for:"
 msgstr "Покушај да нађеш:"
 
-#: searx/templates/simple/results.html:106
+#: searx/templates/simple/results.html:105
 msgid "Back to top"
 msgstr "Назад на врх"
 
-#: searx/templates/simple/results.html:124
+#: searx/templates/simple/results.html:123
 msgid "Previous page"
 msgstr "Претходна страница"
 
-#: searx/templates/simple/results.html:141
+#: searx/templates/simple/results.html:140
 msgid "Next page"
 msgstr "Следећа страница"
 
@@ -671,12 +645,12 @@ msgstr "Резултати"
 msgid "Result count"
 msgstr "Број резултата"
 
-#: searx/templates/simple/preferences/engines.html:24
+#: searx/templates/simple/preferences/engines.html:25
 #: searx/templates/simple/stats.html:28
 msgid "Response time"
 msgstr "Време одзива"
 
-#: searx/templates/simple/preferences/engines.html:28
+#: searx/templates/simple/preferences/engines.html:29
 #: searx/templates/simple/stats.html:29
 msgid "Reliability"
 msgstr "Поузданост"
@@ -745,15 +719,15 @@ msgstr "Коментар(и)"
 msgid "Download results"
 msgstr "Резултати преузимања"
 
-#: searx/templates/simple/elements/engines_msg.html:3
+#: searx/templates/simple/elements/engines_msg.html:7
 msgid "Messages from the search engines"
 msgstr ""
 
-#: searx/templates/simple/elements/engines_msg.html:8
+#: searx/templates/simple/elements/engines_msg.html:12
 msgid "Error!"
 msgstr "Грешка!"
 
-#: searx/templates/simple/elements/engines_msg.html:9
+#: searx/templates/simple/elements/engines_msg.html:13
 msgid "Engines cannot retrieve results"
 msgstr "Не може повратити резултате"
 
@@ -842,12 +816,24 @@ msgid "Sorry!"
 msgstr "Опростите!"
 
 #: searx/templates/simple/messages/no_results.html:4
-msgid ""
-"we didn't find any results. Please use another query or search in more "
-"categories."
+msgid "No results were found. You can try to:"
 msgstr ""
-"нема никавих резултата претраге. Молимо покишајте другу претрагу или "
-"категорију."
+
+#: searx/templates/simple/messages/no_results.html:6
+msgid "Refresh the page."
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:7
+msgid "Search for another query or select another category (above)."
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:8
+msgid "Change the search engine used in the preferences:"
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:9
+msgid "Switch to another instance:"
+msgstr ""
 
 #: searx/templates/simple/preferences/answerers.html:4
 #: searx/templates/simple/preferences/engines.html:17
@@ -874,7 +860,7 @@ msgstr "Примери"
 msgid "This is the list of SearXNG's instant answering modules."
 msgstr "Ово је листа СеарКСНГ-ових модула за тренутно јављање."
 
-#: searx/templates/simple/preferences/answerers.html:28
+#: searx/templates/simple/preferences/answerers.html:29
 msgid "This is the list of plugins."
 msgstr "Ово је листа додатака."
 
@@ -890,19 +876,7 @@ msgstr "Пронађите док куцате"
 msgid "Center Alignment"
 msgstr "Поравнање по средини"
 
-#: searx/templates/simple/preferences/center_alignment.html:5
-#: searx/templates/simple/preferences/infinite_scroll.html:5
-#: searx/templates/simple/preferences/results_on_new_tab.html:5
-msgid "On"
-msgstr "Укључено"
-
-#: searx/templates/simple/preferences/center_alignment.html:6
-#: searx/templates/simple/preferences/infinite_scroll.html:6
-#: searx/templates/simple/preferences/results_on_new_tab.html:6
-msgid "Off"
-msgstr "Искључено"
-
-#: searx/templates/simple/preferences/center_alignment.html:10
+#: searx/templates/simple/preferences/center_alignment.html:14
 msgid "Displays results in the center of the page (Oscar layout)."
 msgstr "Приказује резултате на центру странице (Оскар распоред)."
 
@@ -972,7 +946,11 @@ msgstr ""
 msgid "Supports selected language"
 msgstr "Подржава изабрани језик"
 
-#: searx/templates/simple/preferences/engines.html:26
+#: searx/templates/simple/preferences/engines.html:23
+msgid "Weight"
+msgstr ""
+
+#: searx/templates/simple/preferences/engines.html:27
 msgid "Max time"
 msgstr "Макс. време"
 
@@ -1004,21 +982,25 @@ msgstr "Врати на подразумевано"
 msgid "Back"
 msgstr "Назад"
 
+#: searx/templates/simple/preferences/hotkeys.html:2
+msgid "Hotkeys"
+msgstr ""
+
+#: searx/templates/simple/preferences/hotkeys.html:13
+msgid "Vim-like"
+msgstr ""
+
+#: searx/templates/simple/preferences/hotkeys.html:18
+msgid ""
+"Navigate search results with hotkeys (JavaScript required). Press \"h\" "
+"key on main or result page to get help."
+msgstr ""
+
 #: searx/templates/simple/preferences/image_proxy.html:2
 msgid "Image proxy"
 msgstr "Прокси слика"
 
-#: searx/templates/simple/preferences/image_proxy.html:5
-#: searx/templates/simple/preferences/query_in_title.html:5
-msgid "Enabled"
-msgstr "Омогућено"
-
-#: searx/templates/simple/preferences/image_proxy.html:6
-#: searx/templates/simple/preferences/query_in_title.html:6
-msgid "Disabled"
-msgstr "Онемогућено"
-
-#: searx/templates/simple/preferences/image_proxy.html:10
+#: searx/templates/simple/preferences/image_proxy.html:14
 msgid "Proxying image results through SearXNG"
 msgstr "Прокси резултат слике преко СеарКСНГ"
 
@@ -1026,7 +1008,7 @@ msgstr "Прокси резултат слике преко СеарКСНГ"
 msgid "Infinite scroll"
 msgstr "Бесконачно померање"
 
-#: searx/templates/simple/preferences/infinite_scroll.html:10
+#: searx/templates/simple/preferences/infinite_scroll.html:14
 msgid "Automatically load next page when scrolling to bottom of current page"
 msgstr ""
 "Аутоматско учитавање следеће странице приликом померања на дно текуће "
@@ -1052,7 +1034,7 @@ msgstr ""
 msgid "Query in the page's title"
 msgstr "Упит у наслову странице"
 
-#: searx/templates/simple/preferences/query_in_title.html:10
+#: searx/templates/simple/preferences/query_in_title.html:14
 msgid ""
 "When enabled, the result page's title contains your query. Your browser "
 "can record this title"
@@ -1064,13 +1046,23 @@ msgstr ""
 msgid "Results on new tabs"
 msgstr "Резултати на картицама"
 
-#: searx/templates/simple/preferences/results_on_new_tab.html:10
+#: searx/templates/simple/preferences/results_on_new_tab.html:14
 msgid "Open result links on new browser tabs"
 msgstr "Отворите линкове са резултатима на новим картицама претраживача"
 
 #: searx/templates/simple/preferences/safesearch.html:20
 msgid "Filter content"
 msgstr "Филтрирајте садржај"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:2
+msgid "Search on category select"
+msgstr "Тражите категорију избора"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:14
+msgid ""
+"Perform search immediately if a category selected. Disable to select "
+"multiple categories"
+msgstr ""
 
 #: searx/templates/simple/preferences/theme.html:2
 msgid "Theme"
@@ -1103,6 +1095,10 @@ msgstr "Језик интерфејса"
 #: searx/templates/simple/preferences/ui_locale.html:14
 msgid "Change the language of the layout"
 msgstr "Промените језик сајта"
+
+#: searx/templates/simple/result_templates/code.html:13
+msgid "repo"
+msgstr "репозиторијуми"
 
 #: searx/templates/simple/result_templates/default.html:6
 msgid "show media"
@@ -1603,3 +1599,47 @@ msgstr "сакриј видео"
 #~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
 #~ " rel=\"external\">saznaj vise o request "
 #~ "metodama</a>"
+
+#~ msgid "On"
+#~ msgstr "Укључено"
+
+#~ msgid "Off"
+#~ msgstr "Искључено"
+
+#~ msgid "Enabled"
+#~ msgstr "Омогућено"
+
+#~ msgid "Disabled"
+#~ msgstr "Онемогућено"
+
+#~ msgid ""
+#~ "Perform search immediately if a category"
+#~ " selected. Disable to select multiple "
+#~ "categories. (JavaScript required)"
+#~ msgstr ""
+#~ "Одмах извршите претрагу ако је изабрана"
+#~ " категорија. Онемогућите да би изабрали "
+#~ "више категорија. (Потребан је JavaScript)"
+
+#~ msgid "Vim-like hotkeys"
+#~ msgstr "Vim стил пречице"
+
+#~ msgid ""
+#~ "Navigate search results with Vim-like"
+#~ " hotkeys (JavaScript required). Press \"h\""
+#~ " key on main or result page to"
+#~ " get help."
+#~ msgstr ""
+#~ "Померите резултате претраге помоћу Vim-пречица"
+#~ " (потребан је JavaScript ). Притисните "
+#~ "тастер \"h\" на главној или резултатној"
+#~ " страници да бисте добили помоћ."
+
+#~ msgid ""
+#~ "we didn't find any results. Please "
+#~ "use another query or search in "
+#~ "more categories."
+#~ msgstr ""
+#~ "нема никавих резултата претраге. Молимо "
+#~ "покишајте другу претрагу или категорију."
+
